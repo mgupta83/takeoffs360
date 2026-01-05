@@ -72,8 +72,9 @@ export default function ContactForm() {
       // Ensure reCAPTCHA token exists (v2 checkbox widget)
       let recaptchaToken = '';
       try {
-        if (typeof window !== 'undefined' && (window as any).grecaptcha && typeof (window as any).grecaptcha.getResponse === 'function') {
-          recaptchaToken = (window as any).grecaptcha.getResponse() || '';
+        const grecaptcha = (globalThis as any).grecaptcha;
+        if (grecaptcha && typeof grecaptcha.getResponse === 'function') {
+          recaptchaToken = grecaptcha.getResponse() || '';
         }
       } catch (err) {
         // ignore
@@ -133,8 +134,9 @@ export default function ContactForm() {
       // staticforms usually returns 200 on success; also accept data.success if present
       const resetRecaptcha = () => {
         try {
-          if (typeof window !== 'undefined' && (window as any).grecaptcha && typeof (window as any).grecaptcha.reset === 'function') {
-            (window as any).grecaptcha.reset();
+          const grecaptcha = (globalThis as any).grecaptcha;
+          if (grecaptcha && typeof grecaptcha.reset === 'function') {
+            grecaptcha.reset();
           }
           const respInput = document.querySelector('input[name="g-recaptcha-response"]') as HTMLInputElement | null;
           if (respInput) respInput.value = '';
@@ -161,8 +163,9 @@ export default function ContactForm() {
       console.error('Submit error', err);
       // Reset reCAPTCHA on network/catch errors so user can retry
       try {
-        if (typeof window !== 'undefined' && (window as any).grecaptcha && typeof (window as any).grecaptcha.reset === 'function') {
-          (window as any).grecaptcha.reset();
+        const grecaptcha = (globalThis as any).grecaptcha;
+        if (grecaptcha && typeof grecaptcha.reset === 'function') {
+          grecaptcha.reset();
         }
         const respInput = document.querySelector('input[name="g-recaptcha-response"]') as HTMLInputElement | null;
         if (respInput) respInput.value = '';
