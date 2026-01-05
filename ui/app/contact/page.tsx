@@ -272,34 +272,35 @@ export default function ContactForm() {
             </div>
           )}
 
-            <form onSubmit={onSubmit} className="space-y-4">
-          <div style={{ display: 'none' }} aria-hidden>
-            <label>Do not fill</label>
-            <input name="botcheck" />
-          </div>
+          <form onSubmit={onSubmit} className="space-y-4">
+            <div style={{ display: 'none' }} aria-hidden>
+              <label>Do not fill</label>
+              <input name="botcheck" />
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="name">Name</label>
-            <input id="name" name="name" type="text" required onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
-          </div>
+            <div>
+              <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="name">Name</label>
+              <input id="name" name="name" type="text" required onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="phone">Phone</label>
-            <input id="phone" name="phone" type="tel" required onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
-          </div>
+            <div>
+              <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" required onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="optional" onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
-          </div>
+            <div>
+              <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="optional" onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
+            </div>
 
 
-          <div>
-            <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="message">Message</label>
-            <textarea id="message" name="message" required rows={6} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
-          </div>
+            <div>
+              <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="message">Message</label>
+              <textarea id="message" name="message" required rows={6} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
+            </div>
 
-              <div className="g-recaptcha mr-4" data-sitekey={RECAPTCHA_SITE_KEY}></div>
+            <div className="g-recaptcha mr-4" data-sitekey={RECAPTCHA_SITE_KEY}/>
+
             <button
               type="submit"
               disabled={submitting || sent}
@@ -314,10 +315,9 @@ export default function ContactForm() {
                 (submitting ? 'Sending...' : 'Send Message')
               )}
             </button>
-
             
-        </form>
-      </div>
+          </form>
+        </div>
       </div>
     </section>
   );
