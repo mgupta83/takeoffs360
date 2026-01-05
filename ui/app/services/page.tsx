@@ -60,7 +60,9 @@ export default function ConstructionDivisions() {
             {/* Icon & ID Header */}
             <div className="flex items-center justify-between mb-6">
               <div className="p-3 bg-yellow-500 text-black rounded-sm group-hover:bg-black group-hover:text-yellow-500 transition-colors">
-                {React.cloneElement(div.icon as React.ReactElement, { size: 32, strokeWidth: 2.5 })}
+                {React.isValidElement(div.icon)
+                  ? React.cloneElement(div.icon as React.ReactElement<any>, { size: 32, strokeWidth: 2.5 } as any)
+                  : null}
               </div>
               <span className="text-sm font-black tracking-widest text-zinc-300 group-hover:text-yellow-500 transition-colors">
                 DIV {div.id}
