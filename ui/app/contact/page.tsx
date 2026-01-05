@@ -34,7 +34,7 @@ export default function ContactForm() {
   const [statusType, setStatusType] = useState<'error' | 'success' | null>(null);
   const [sent, setSent] = useState(false);
   
-
+  
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText(EMAIL);
@@ -179,8 +179,8 @@ export default function ContactForm() {
 
   return (
     <section className="max-w-5xl mx-auto px-6 py-20">
-      {/* Load reCAPTCHA script for this page only */}
-      <Script src="https://www.google.com/recaptcha/api.js" strategy="beforeInteractive" />
+      {/* Load reCAPTCHA script for this page only after hydration */}
+      <Script src="https://www.google.com/recaptcha/api.js" strategy="afterInteractive" />
       <h1 className="text-4xl font-black mb-4">Contact Us</h1>
       <p className="text-lg text-zinc-600 mb-8">Choose an option below to reach us quickly.</p>
 
