@@ -2,21 +2,50 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="max-w-6xl mx-auto px-6 py-20">
-      <h1 className="text-4xl font-bold text-slate-800">
-        Accurate Construction Quantity Takeoffs
-      </h1>
-      <p className="mt-4 text-lg text-slate-600 max-w-2xl">
-        Fast, reliable material takeoffs that help contractors bid confidently
-        and improve profitability.
-      </p>
+    <main>
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 className="text-4xl font-extrabold text-slate-900 leading-tight">Bid More. Win More. Build Smarter.</h1>
+            <p className="mt-4 text-lg text-slate-600 max-w-lg">Takeoffs360 produces accurate, trade-specific takeoffs and cost estimates that turn drawings into submission-ready quantities — built for speed and precision so you can pursue more opportunities with confidence.</p>
 
-      <a
-        href="/contact"
-        className="inline-block mt-8 rounded bg-amber-500 px-6 py-3 text-white font-medium hover:bg-amber-600"
-      >
-        Request a Quote
-      </a>
+            <div className="mt-8 flex items-center gap-4">
+              <a href="/contact" className="inline-block rounded bg-amber-500 px-6 py-3 text-white font-medium hover:bg-amber-600">Get Started</a>
+              <a href="/pricing" className="text-sm text-slate-700 hover:underline">See Pricing</a>
+            </div>
+
+            <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-700">
+              <li>Dedicated teams — not shared resources</li>
+              <li>Confidential & secure delivery</li>
+              <li>Fast turnarounds — overnight & next-day</li>
+              <li>Flexible, cost-effective pricing</li>
+            </ul>
+          </div>
+
+          <div className="flex justify-center md:justify-end">
+            <Image src="/flyer.jpg" alt="Takeoffs360 services" width={520} height={640} className="rounded shadow-sm" />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50">
+        <div className="max-w-6xl mx-auto px-6 py-14">
+          <h2 className="text-2xl font-semibold text-slate-800">Our Services</h2>
+          <p className="mt-3 text-slate-700 max-w-2xl">Comprehensive quantity takeoffs across major CSI divisions — built for speed, accuracy, and value.</p>
+
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="rounded bg-white p-4 shadow-sm">
+              <h3 className="font-semibold">Concrete & Rebar</h3>
+              <p className="text-sm text-slate-600">Concrete takeoffs, rebar estimates, foundations & walls.</p>
+            </div>
+
+            <div className="rounded bg-white p-4 shadow-sm">
+              <h3 className="font-semibold">Masonry</h3>
+              <p className="text-sm text-slate-600">CMU & brick takeoffs, masonry veneers, cast stone.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }
