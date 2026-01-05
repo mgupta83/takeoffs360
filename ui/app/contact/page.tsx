@@ -13,22 +13,27 @@
 // }
 'use client'
 
-import { useRef, useState } from 'react';
+import Script from 'next/script'
+import { useState } from 'react';
 import { Mail, Copy, Check, Phone } from 'lucide-react';
 
 const EMAIL = 'info@takeoffs360.com';
 const PHONE = '000-000-0000';
-const API_URL = 'https://api.staticforms.dev/submit'; //'https://api.web3forms.com/submit';
-const API_KEY = 'sf_8mjh00l3g2id8lj5lk8l28al'; //'c1b55a19-e888-45fc-a279-4d98922efa96';
-const API_KEY_FIELD = 'apiKey'; //'access_key';
+const API_URL = 'https://api.staticforms.dev/submit';
+const API_KEY = 'sf_8mjh00l3g2id8lj5lk8l28al';
+const API_KEY_FIELD = 'apiKey';
+const RECAPTCHA_SITE_KEY = '6LcGiEAsAAAAAHnkn1ZsNiXerJ6HppFfIHdW3ukt';
 
 export default function ContactForm() {
+  // Per StaticForms v2 guidance, include reCAPTCHA script in the page <head> or static layout.
+  // We keep the visible widget in the form; no dynamic script injection needed here.
   const [submitting, setSubmitting] = useState(false);
   const [copied, setCopied] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [statusType, setStatusType] = useState<'error' | 'success' | null>(null);
-  const formRef = useRef<HTMLFormElement | null>(null);
+  const [sent, setSent] = useState(false);
+  
 
   const copyEmail = async () => {
     try {
@@ -60,17 +65,41 @@ export default function ContactForm() {
 
     try {
       const form = event.target as HTMLFormElement;
-      // populate hidden subject with name
       const nameVal = (form.querySelector('input[name="name"]') as HTMLInputElement)?.value || '';
-      const subjectEl = form.querySelector('input[name="subject"]') as HTMLInputElement | null;
-      if (subjectEl) subjectEl.value = `New message from ${nameVal}`;
+      // StaticForms v2: visible widget will populate `g-recaptcha-response` automatically.
+      // We do minimal client-side checks and rely on StaticForms to validate the token.
+
+      // Ensure reCAPTCHA token exists (v2 checkbox widget)
+      let recaptchaToken = '';
+      try {
+        if (typeof window !== 'undefined' && (window as any).grecaptcha && typeof (window as any).grecaptcha.getResponse === 'function') {
+          recaptchaToken = (window as any).grecaptcha.getResponse() || '';
+        }
+      } catch (err) {
+        // ignore
+      }
+      // fallback: check for g-recaptcha-response input filled by the widget
+      if (!recaptchaToken) {
+        const respInput = form.querySelector('input[name="g-recaptcha-response"]') as HTMLInputElement | null;
+        if (respInput) recaptchaToken = respInput.value || '';
+      }
+
+      if (!recaptchaToken) {
+        setStatusMessage('Please complete the reCAPTCHA checkbox before sending.');
+        setStatusType('error');
+        setSubmitting(false);
+        // try to scroll/focus the widget
+        const widget = document.querySelector('.g-recaptcha') as HTMLElement | null;
+        if (widget) widget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
       const formData = new FormData(form);
 
-      // Build JSON payload from form data
-      const payload: Record<string, any> = {};
-      formData.forEach((value, key) => {
-        payload[key] = value;
-      });
+      // Build JSON payload from form data (concise)
+      const payload: Record<string, any> = Object.fromEntries(formData.entries());
+      // set a friendly subject
+      payload.subject = `New message from ${nameVal}`;
 
       // Honeypot check
       if (payload.botcheck) {
@@ -90,9 +119,8 @@ export default function ContactForm() {
         return;
       }
 
-      // Include API key field expected by StaticForms
+      // Include public API key (StaticForms public key) and post directly
       payload[API_KEY_FIELD] = API_KEY;
-
       const res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -103,27 +131,56 @@ export default function ContactForm() {
       try { data = await res.json(); } catch {}
 
       // staticforms usually returns 200 on success; also accept data.success if present
+      const resetRecaptcha = () => {
+        try {
+          if (typeof window !== 'undefined' && (window as any).grecaptcha && typeof (window as any).grecaptcha.reset === 'function') {
+            (window as any).grecaptcha.reset();
+          }
+          const respInput = document.querySelector('input[name="g-recaptcha-response"]') as HTMLInputElement | null;
+          if (respInput) respInput.value = '';
+        } catch (err) {
+          console.warn('reCAPTCHA reset failed', err);
+        }
+      };
+
       if (res.ok && (data === null || data.success === undefined || data.success)) {
         setStatusMessage('Thanks — your message was sent successfully.');
         setStatusType('success');
         form.reset();
+        resetRecaptcha();
+        setSent(true);
+        setTimeout(() => setSent(false), 10000);
       } else {
+        // Reset recaptcha on error too so user can retry with a fresh token
+        resetRecaptcha();
         setStatusMessage('Sorry, something went wrong. Please try again later.');
         setStatusType('error');
         console.error('StaticForms error:', { status: res.status, body: data });
       }
     } catch (err) {
       console.error('Submit error', err);
+      // Reset reCAPTCHA on network/catch errors so user can retry
+      try {
+        if (typeof window !== 'undefined' && (window as any).grecaptcha && typeof (window as any).grecaptcha.reset === 'function') {
+          (window as any).grecaptcha.reset();
+        }
+        const respInput = document.querySelector('input[name="g-recaptcha-response"]') as HTMLInputElement | null;
+        if (respInput) respInput.value = '';
+      } catch (err2) {
+        /* ignore */
+      }
       setStatusMessage('Network error — please try again later.');
       setStatusType('error');
     } finally {
       setSubmitting(false);
-      formRef.current?.querySelector<HTMLInputElement>('input[name="name"]')?.focus();
+      (document.querySelector('input[name="name"]') as HTMLInputElement | null)?.focus();
     }
   };
 
   return (
     <section className="max-w-5xl mx-auto px-6 py-20">
+      {/* Load reCAPTCHA script for this page only */}
+      <Script src="https://www.google.com/recaptcha/api.js" strategy="beforeInteractive" />
       <h1 className="text-4xl font-black mb-4">Contact Us</h1>
       <p className="text-lg text-zinc-600 mb-8">Choose an option below to reach us quickly.</p>
 
@@ -195,9 +252,7 @@ export default function ContactForm() {
             </div>
           )}
 
-          <form ref={formRef} onSubmit={onSubmit} className="space-y-4">
-          <input type="hidden" name="redirect" value="" />
-          <input type="hidden" name="subject" value="" />
+            <form onSubmit={onSubmit} className="space-y-4">
           <div style={{ display: 'none' }} aria-hidden>
             <label>Do not fill</label>
             <input name="botcheck" />
@@ -223,17 +278,23 @@ export default function ContactForm() {
             <textarea id="message" name="message" required rows={6} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
           </div>
 
-          <div className="flex items-center justify-between gap-4">
+              <div className="g-recaptcha mr-4" data-sitekey={RECAPTCHA_SITE_KEY}></div>
             <button
               type="submit"
-              disabled={submitting}
+              disabled={submitting || sent}
               className="inline-flex items-center gap-2 rounded bg-amber-500 px-4 py-2 text-white font-medium hover:bg-amber-600 disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
             >
-              {submitting ? 'Sending...' : 'Send Message'}
+              {sent ? (
+                <>
+                  <Check className="h-4 w-4 text-white" />
+                  <span>Sent</span>
+                </>
+              ) : (
+                (submitting ? 'Sending...' : 'Send Message')
+              )}
             </button>
 
             
-          </div>
         </form>
       </div>
       </div>
