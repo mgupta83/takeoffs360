@@ -110,11 +110,18 @@ export default function ContactForm() {
         return;
       }
 
-      // Require at least one contact method: email or phone
-      const hasEmail = payload.email && String(payload.email).trim() !== '';
-      const hasPhone = payload.phone && String(payload.phone).trim() !== '';
-      if (!hasEmail && !hasPhone) {
-        setStatusMessage('Please provide an email or phone number.');
+      // Require phone (email is optional). Basic phone normalization/format check.
+      const phoneRaw = payload.phone ? String(payload.phone).trim() : '';
+      if (!phoneRaw) {
+        setStatusMessage('Please provide a phone number.');
+        setStatusType('error');
+        setSubmitting(false);
+        return;
+      }
+      // Normalize: keep digits only and ensure a reasonable length (7-15 digits)
+      const digits = phoneRaw.replace(/\D/g, '');
+      if (digits.length < 7 || digits.length > 15) {
+        setStatusMessage('Please enter a valid phone number.');
         setStatusType('error');
         setSubmitting(false);
         return;
@@ -257,8 +264,7 @@ export default function ContactForm() {
         {/* Contact form with title and subtext */}
         <div className="bg-white p-6 rounded-lg shadow-sm border border-zinc-100">
           <h2 className="text-2xl font-semibold">Send us a message</h2>
-          <p className="text-sm text-zinc-600 mt-1 mb-2">and we'll revert back within 24 hours</p>
-          <br/><p className="text-xs text-zinc-500 mb-4">Please provide at least one contact method: email or phone.</p>
+          <p className="text-sm text-zinc-600 mt-1 mb-4">and we'll revert back within 24 hours</p>
 
           {statusMessage && (
             <div className={`mb-4 rounded px-4 py-3 text-sm ${statusType === 'error' ? 'border border-red-200 bg-red-50 text-red-800' : 'border border-green-200 bg-green-50 text-green-800'}`} role="status">
@@ -274,18 +280,19 @@ export default function ContactForm() {
 
           <div>
             <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="name">Name</label>
-            <input id="name" name="name" type="text" required placeholder="Your Name" onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="Your Email" onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
+            <input id="name" name="name" type="text" required onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="phone">Phone</label>
-            <input id="phone" name="phone" type="tel" placeholder="Your Phone" onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
+            <input id="phone" name="phone" type="tel" required onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
           </div>
+
+          <div>
+            <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="optional" onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
+          </div>
+
 
           <div>
             <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="message">Message</label>
