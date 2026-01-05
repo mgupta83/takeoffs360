@@ -18,12 +18,16 @@ import { Mail, Copy, Check, Phone } from 'lucide-react';
 
 const EMAIL = 'info@takeoffs360.com';
 const PHONE = '000-000-0000';
+const API_URL = 'https://api.staticforms.dev/submit'; //'https://api.web3forms.com/submit';
+const API_KEY = 'sf_8mjh00l3g2id8lj5lk8l28al'; //'c1b55a19-e888-45fc-a279-4d98922efa96';
+const API_KEY_FIELD = 'apiKey'; //'access_key';
 
 export default function ContactForm() {
-  const [resultMessage, setResultMessage] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [copied, setCopied] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [statusType, setStatusType] = useState<'error' | 'success' | null>(null);
   const formRef = useRef<HTMLFormElement | null>(null);
 
   const copyEmail = async () => {
@@ -50,34 +54,68 @@ export default function ContactForm() {
 
   const onSubmit = async (event: any) => {
     event.preventDefault();
-    setResultMessage(null);
+    setStatusMessage(null);
+    setStatusType(null);
     setSubmitting(true);
 
     try {
       const form = event.target as HTMLFormElement;
+      // populate hidden subject with name
+      const nameVal = (form.querySelector('input[name="name"]') as HTMLInputElement)?.value || '';
+      const subjectEl = form.querySelector('input[name="subject"]') as HTMLInputElement | null;
+      if (subjectEl) subjectEl.value = `New message from ${nameVal}`;
       const formData = new FormData(form);
-      formData.append('access_key', 'c1b55a19-e888-45fc-a279-4d98922efa96');
-      if (!formData.get('subject')) {
-        formData.append('subject', 'New contact request from website');
-      }
 
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData,
+      // Build JSON payload from form data
+      const payload: Record<string, any> = {};
+      formData.forEach((value, key) => {
+        payload[key] = value;
       });
 
-      const data = await res.json();
+      // Honeypot check
+      if (payload.botcheck) {
+        setStatusMessage('Bad submission');
+        setStatusType('error');
+        setSubmitting(false);
+        return;
+      }
 
-      if (data.success) {
-        setResultMessage('Thanks — your message was sent successfully.');
+      // Require at least one contact method: email or phone
+      const hasEmail = payload.email && String(payload.email).trim() !== '';
+      const hasPhone = payload.phone && String(payload.phone).trim() !== '';
+      if (!hasEmail && !hasPhone) {
+        setStatusMessage('Please provide an email or phone number.');
+        setStatusType('error');
+        setSubmitting(false);
+        return;
+      }
+
+      // Include API key field expected by StaticForms
+      payload[API_KEY_FIELD] = API_KEY;
+
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      let data: any = null;
+      try { data = await res.json(); } catch {}
+
+      // staticforms usually returns 200 on success; also accept data.success if present
+      if (res.ok && (data === null || data.success === undefined || data.success)) {
+        setStatusMessage('Thanks — your message was sent successfully.');
+        setStatusType('success');
         form.reset();
       } else {
-        setResultMessage('Sorry, something went wrong. Please try again later.');
-        console.error('Web3Forms error:', data);
+        setStatusMessage('Sorry, something went wrong. Please try again later.');
+        setStatusType('error');
+        console.error('StaticForms error:', { status: res.status, body: data });
       }
     } catch (err) {
       console.error('Submit error', err);
-      setResultMessage('Network error — please try again later.');
+      setStatusMessage('Network error — please try again later.');
+      setStatusType('error');
     } finally {
       setSubmitting(false);
       formRef.current?.querySelector<HTMLInputElement>('input[name="name"]')?.focus();
@@ -148,10 +186,18 @@ export default function ContactForm() {
         {/* Contact form with title and subtext */}
         <div className="bg-white p-6 rounded-lg shadow-sm border border-zinc-100">
           <h2 className="text-2xl font-semibold">Send us a message</h2>
-          <p className="text-sm text-zinc-600 mt-1 mb-4">and we'll revert back within 24 hours</p>
+          <p className="text-sm text-zinc-600 mt-1 mb-2">and we'll revert back within 24 hours</p>
+          <br/><p className="text-xs text-zinc-500 mb-4">Please provide at least one contact method: email or phone.</p>
+
+          {statusMessage && (
+            <div className={`mb-4 rounded px-4 py-3 text-sm ${statusType === 'error' ? 'border border-red-200 bg-red-50 text-red-800' : 'border border-green-200 bg-green-50 text-green-800'}`} role="status">
+              {statusMessage}
+            </div>
+          )}
 
           <form ref={formRef} onSubmit={onSubmit} className="space-y-4">
           <input type="hidden" name="redirect" value="" />
+          <input type="hidden" name="subject" value="" />
           <div style={{ display: 'none' }} aria-hidden>
             <label>Do not fill</label>
             <input name="botcheck" />
@@ -159,17 +205,17 @@ export default function ContactForm() {
 
           <div>
             <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="name">Name</label>
-            <input id="name" name="name" type="text" required className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
+            <input id="name" name="name" type="text" required placeholder="Your Name" onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="email">Email</label>
-            <input id="email" name="email" type="email" required className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
+            <input id="email" name="email" type="email" placeholder="Your Email" onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="subject">Subject</label>
-            <input id="subject" name="subject" type="text" className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
+            <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" placeholder="Your Phone" onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
           </div>
 
           <div>
@@ -186,9 +232,7 @@ export default function ContactForm() {
               {submitting ? 'Sending...' : 'Send Message'}
             </button>
 
-            {resultMessage && (
-              <p className="text-sm text-zinc-700" role="status">{resultMessage}</p>
-            )}
+            
           </div>
         </form>
       </div>
