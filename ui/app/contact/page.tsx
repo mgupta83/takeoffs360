@@ -15,7 +15,7 @@
 
 import Script from 'next/script'
 import { useState } from 'react';
-import { Mail, Copy, Check, Phone } from 'lucide-react';
+import { Mail, Copy, Check, Phone, PhoneCall } from 'lucide-react';
 
 const EMAIL = 'info@takeoffs360.com';
 const PHONE = '000-000-0000';
@@ -220,20 +220,31 @@ export default function ContactForm() {
                 <div className="text-sm font-semibold">Phone</div>
                 <div className="mt-1 flex items-center gap-2">
                   <div className="text-zinc-700 font-medium mr-2">{PHONE}</div>
-                  <span
-                    role="button"
-                    tabIndex={0}
-                    onClick={copyPhone}
-                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyPhone(); } }}
-                    aria-label="Copy phone to clipboard"
-                    className="inline-flex items-center justify-center h-6 w-6 rounded text-slate-600 hover:bg-slate-100 cursor-pointer"
-                  >
-                    {copiedPhone ? (
-                      <Check className="h-4 w-4 text-amber-500" />
-                    ) : (
-                      <Copy className="h-4 w-4" />
-                    )}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href={`tel:${PHONE}`}
+                      aria-label={`Call ${PHONE}`}
+                      className="inline-flex items-center justify-center h-7 px-3 rounded bg-amber-50 text-amber-600 border border-amber-100 hover:bg-amber-100 text-sm gap-2"
+                    >
+                      <PhoneCall className="h-4 w-4" />
+                      <span>Call</span>
+                    </a>
+
+                    <span
+                      role="button"
+                      tabIndex={0}
+                      onClick={copyPhone}
+                      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyPhone(); } }}
+                      aria-label="Copy phone to clipboard"
+                      className="inline-flex items-center justify-center h-6 w-6 rounded text-slate-600 hover:bg-slate-100 cursor-pointer"
+                    >
+                      {copiedPhone ? (
+                        <Check className="h-4 w-4 text-amber-500" />
+                      ) : (
+                        <Copy className="h-4 w-4" />
+                      )}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
