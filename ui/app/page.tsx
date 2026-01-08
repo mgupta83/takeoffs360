@@ -82,12 +82,12 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {divisions.map((div) => (
               <article key={div.id} className="group flex flex-col bg-white border border-zinc-200 p-6 shadow-sm hover:shadow-md transition-all duration-200">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-amber-500 text-black rounded">{React.isValidElement(div.icon) ? React.cloneElement(div.icon as React.ReactElement<any>, { size: 20, strokeWidth: 2 } as any) : null}</div>
-                    <div className="text-sm font-black">DIV {div.id}</div>
+                <div className="flex items-center gap-4 mb-4 flex-wrap">
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    <div className="p-2 bg-amber-500 text-black rounded flex-shrink-0">{React.isValidElement(div.icon) ? React.cloneElement(div.icon as React.ReactElement<any>, { size: 20, strokeWidth: 2 } as any) : null}</div>
+                    <div className="text-sm font-black whitespace-nowrap">DIV {div.id}</div>
                   </div>
-                  <h3 className="text-lg font-semibold ml-2">{div.title}</h3>
+                  <h3 className="text-lg font-semibold flex-1 min-w-0">{div.title}</h3>
                 </div>
 
                 <p className="text-zinc-600 text-sm">{div.summary}</p>
