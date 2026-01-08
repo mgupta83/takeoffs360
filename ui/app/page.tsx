@@ -1,116 +1,101 @@
-import Image from "next/image";
+import HeroCarousel from '@/components/HeroCarousel'
+import React from 'react'
+import {
+  ClipboardCheck, HardHat, Layers, BrickWall,
+  Component, TreePine, ShieldCheck, DoorOpen,
+  Palette, PackageSearch
+} from 'lucide-react'
+
+const divisions = [
+  { id: '01', title: 'General Requirements', summary: 'Administrative and procedural rules, including quality control and site management.', icon: <ClipboardCheck /> },
+  { id: '02', title: 'Existing Conditions', summary: 'Pre-construction site assessment, demolition, and remediation of hazardous materials.', icon: <HardHat /> },
+  { id: '03', title: 'Concrete', summary: 'Formwork, reinforcing, cast-in-place, and precast concrete structural elements.', icon: <Layers /> },
+  { id: '04', title: 'Masonry', summary: 'Brick, stone, CMU (block), and specialized glass block construction.', icon: <BrickWall /> },
+  { id: '05', title: 'Metals', summary: 'Structural steel framing, metal joists, decking, and ornamental handrails.', icon: <Component /> },
+  { id: '06', title: 'Wood, Plastics, & Composites', summary: 'Rough carpentry, structural framing, cabinetry, and plastic fabrications.', icon: <TreePine /> },
+  { id: '07', title: 'Thermal & Moisture Protection', summary: 'Waterproofing, air barriers, insulation, roofing, and firestopping systems.', icon: <ShieldCheck /> },
+  { id: '08', title: 'Openings', summary: 'Installation of doors, windows, skylights, and hardware systems.', icon: <DoorOpen /> },
+  { id: '09', title: 'Finishes', summary: 'Interior/exterior painting, drywall, tile, wood flooring, and ceilings.', icon: <Palette /> },
+  { id: '10', title: 'Specialties', summary: 'Visual displays, signage, lockers, and prefabricated partitions.', icon: <PackageSearch /> },
+]
 
 export default function Home() {
   return (
     <main>
+      {/* Hero Carousel at top */}
       <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div>
-            <h1 className="text-4xl font-extrabold text-slate-900 leading-tight">Bid More. Win More. Build Smarter.</h1>
-            <p className="mt-4 text-lg text-slate-600 max-w-lg">Takeoffs360 produces accurate, trade-specific takeoffs and cost estimates that turn drawings into submission-ready quantities — built for speed and precision so you can pursue more opportunities with confidence.</p>
+        <div className="max-w-6xl mx-auto px-6 py-8">
+          <HeroCarousel
+            slides={[
+              { src: '/pic-1.png', alt: 'Takeoffs360 software view', caption: 'Bid more. Win more. Build smarter.' },
+              { src: '/pic-2.png', alt: 'Takeoffs360 plan view', caption: 'Let us build estimates for you — faster, accurate, delivered.' }
+            ]}
+          />
+        </div>
+      </section>
 
-            <div className="mt-8 flex items-center gap-4">
-              <a href="/contact" className="inline-block rounded bg-amber-500 px-6 py-3 text-white font-medium hover:bg-amber-600">Get Started</a>
-              <a href="/pricing" className="text-sm text-slate-700 hover:underline">See Pricing</a>
-            </div>
-
-            <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-700">
-              <li>Dedicated teams — not shared resources</li>
-              <li>Confidential & secure delivery</li>
-              <li>Fast turnarounds — overnight & next-day</li>
-              <li>Flexible, cost-effective pricing</li>
-            </ul>
-          </div>
-
-          <div className="flex justify-center md:justify-end">
-            <Image src="/flyer.jpg" alt="Takeoffs360 services" width={520} height={640} className="rounded shadow-sm" />
+      {/* Who Are We */}
+      <section id="who" className="bg-white">
+        <div className="max-w-6xl mx-auto px-6 py-16">
+          <div className="text-center">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900">Who Are We</h2>
+            <p className="mt-4 text-lg text-slate-700 max-w-3xl mx-auto">Takeoffs360 provides contractor-focused quantity takeoffs and estimating services backed by experienced estimators and modern workflows. We turn drawings into accurate, actionable quantities so your team can respond faster and bid smarter.</p>
+            {/* CTAs removed to simplify header interactions */}
           </div>
         </div>
       </section>
 
-      <section className="bg-slate-50">
-        <div className="max-w-6xl mx-auto px-6 py-14">
-          <h2 className="text-2xl font-semibold text-slate-800">Our Services</h2>
-          <p className="mt-3 text-slate-700 max-w-2xl">Comprehensive quantity takeoffs across major CSI divisions — built for speed, accuracy, and value.</p>
-
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="rounded bg-white p-4 shadow-sm">
-              <h3 className="font-semibold">Concrete & Rebar</h3>
-              <p className="text-sm text-slate-600">Concrete takeoffs, rebar estimates, foundations & walls.</p>
+      {/* Why Choose Us */}
+      <section id="why" className="bg-white">
+        <div className="max-w-6xl mx-auto px-6 py-16">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 text-center">Why Choose Us</h2>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="rounded bg-white p-6 shadow-sm text-center">
+              <div className="text-amber-500 text-3xl font-bold">Accuracy</div>
+              <h3 className="mt-3 font-semibold">Trusted Estimates</h3>
+              <p className="mt-2 text-sm text-slate-600">Trade-specific takeoffs and double-checked quantities.</p>
             </div>
 
-            <div className="rounded bg-white p-4 shadow-sm">
-              <h3 className="font-semibold">Masonry</h3>
-              <p className="text-sm text-slate-600">CMU & brick takeoffs, masonry veneers, cast stone.</p>
+            <div className="rounded bg-white p-6 shadow-sm text-center">
+              <div className="text-amber-500 text-3xl font-bold">Speed</div>
+              <h3 className="mt-3 font-semibold">Fast Turnarounds</h3>
+              <p className="mt-2 text-sm text-slate-600">Next-day and overnight delivery options available.</p>
             </div>
+
+            <div className="rounded bg-white p-6 shadow-sm text-center">
+              <div className="text-amber-500 text-3xl font-bold">Support</div>
+              <h3 className="mt-3 font-semibold">Dedicated Teams</h3>
+              <p className="mt-2 text-sm text-slate-600">A single point of contact and consistent estimator teams.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Services (detailed divisions) */}
+      <section id="services" className="bg-zinc-50">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <header className="mb-12 text-center">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900">Our Services</h2>
+            <p className="mt-4 text-lg text-slate-700 max-w-3xl mx-auto">Comprehensive quantity takeoffs across major CSI divisions — built for speed, accuracy, and value.</p>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {divisions.map((div) => (
+              <article key={div.id} className="group flex flex-col bg-white border border-zinc-200 p-6 shadow-sm hover:shadow-md transition-all duration-200">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-amber-500 text-black rounded">{React.isValidElement(div.icon) ? React.cloneElement(div.icon as React.ReactElement<any>, { size: 20, strokeWidth: 2 } as any) : null}</div>
+                    <div className="text-sm font-black">DIV {div.id}</div>
+                  </div>
+                  <h3 className="text-lg font-semibold ml-2">{div.title}</h3>
+                </div>
+
+                <p className="text-zinc-600 text-sm">{div.summary}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
     </main>
   )
 }
-
-
-// export default function Home() {
-//   return (
-//     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-//       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-//         <Image
-//           className="dark:invert"
-//           src="/next.svg"
-//           alt="Next.js logo"
-//           width={100}
-//           height={20}
-//           priority
-//         />
-//         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-//           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-//             To get started, edit the page.tsx file.
-//           </h1>
-//           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-//             Looking for a starting point or more instructions? Head over to{" "}
-//             <a
-//               href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-//               className="font-medium text-zinc-950 dark:text-zinc-50"
-//             >
-//               Templates
-//             </a>{" "}
-//             or the{" "}
-//             <a
-//               href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-//               className="font-medium text-zinc-950 dark:text-zinc-50"
-//             >
-//               Learning
-//             </a>{" "}
-//             center.
-//           </p>
-//         </div>
-//         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-//           <a
-//             className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-//             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             <Image
-//               className="dark:invert"
-//               src="/vercel.svg"
-//               alt="Vercel logomark"
-//               width={16}
-//               height={16}
-//             />
-//             Deploy Now
-//           </a>
-//           <a
-//             className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-//             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             Documentation
-//           </a>
-//         </div>
-//       </main>
-//     </div>
-//   );
-// }

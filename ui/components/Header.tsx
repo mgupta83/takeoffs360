@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Header() {
@@ -18,24 +19,31 @@ export default function Header() {
     <header className="border-b border-slate-200">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
         <div className="flex items-center gap-4">
-          <span className="text-2xl font-bold text-slate-800">Takeoffs360</span>
+          <a href="/#who" className="flex items-center gap-3" aria-label="Takeoffs360 home">
+            <Image
+              src="/logo.png"
+              alt="Takeoffs360 logo"
+              width={220}
+              height={60}
+              priority
+              sizes="(max-width: 640px) 140px, 220px"
+              className="h-10 sm:h-14 w-auto"
+            />
+            <span className="text-xl sm:text-3xl font-extrabold text-slate-800">Takeoffs360</span>
+          </a>
+
           <span className="hidden sm:inline text-sm text-slate-500">Accurate quantity takeoffs</span>
         </div>
 
         <div className="flex items-center gap-6">
           <nav className="hidden md:flex items-center gap-6 text-slate-600">
-            <a href="/" className="hover:text-slate-900">Home</a>
-            <a href="/why-us" className="hover:text-slate-900">Why Us</a>
-            <a href="/services" className="hover:text-slate-900">Services</a>
+            <a href="/#who" className="hover:text-slate-900">Who Are We</a>
+            <a href="/#why" className="hover:text-slate-900">Why Choose Us</a>
+            <a href="/#services" className="hover:text-slate-900">Services</a>
             <a href="/contact" className="hover:text-slate-900">Contact</a>
           </nav>
 
-          <a
-            href="/contact"
-            className="hidden md:inline-flex items-center gap-2 rounded bg-amber-500 px-4 py-2 text-white text-sm font-medium hover:bg-amber-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
-          >
-            Request a Quote
-          </a>
+          {/* CTAs removed - use Contact page link in nav */}
 
           {/* Mobile hamburger */}
           <button
@@ -59,10 +67,10 @@ export default function Header() {
         className={`md:hidden ${open ? 'block' : 'hidden'} border-t border-slate-100 bg-white`}
       >
         <div className="max-w-6xl mx-auto px-6 py-4 space-y-4">
-          <nav className="flex flex-col gap-3 text-slate-700">
-            <a href="/" className="py-2 px-3 rounded hover:bg-slate-50">Home</a>
-            <a href="/why-us" className="py-2 px-3 rounded hover:bg-slate-50">Why Us</a>
-            <a href="/services" className="py-2 px-3 rounded hover:bg-slate-50">Services</a>
+            <nav className="flex flex-col gap-3 text-slate-700">
+            <a href="/#who" className="py-2 px-3 rounded hover:bg-slate-50">Who Are We</a>
+            <a href="/#why" className="py-2 px-3 rounded hover:bg-slate-50">Why Choose Us</a>
+            <a href="/#services" className="py-2 px-3 rounded hover:bg-slate-50">Services</a>
             <a href="/contact" className="py-2 px-3 rounded hover:bg-slate-50">Contact</a>
           </nav>
 

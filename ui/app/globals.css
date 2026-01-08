@@ -24,3 +24,18 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Logo helper for dark/light variants when using <img> fallback */
+.site-logo {
+  height: 40px;
+  width: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo-light { display: none; }
+  .logo-dark { display: inline-block; }
+}
+@media (prefers-color-scheme: light) {
+  .logo-dark { display: none; }
+  .logo-light { display: inline-block; }
+}

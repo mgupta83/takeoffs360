@@ -18,6 +18,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Takeoffs360 | Construction Quantity Takeoffs",
   description: "Accurate construction quantity takeoffs for contractors and builders.",
+  icons: [
+    { rel: 'icon', url: '/favicon-32x32.svg' },
+    { rel: 'icon', url: '/favicon-16x16.svg' },
+    { rel: 'apple-touch-icon', url: '/logo.png' },
+  ],
+  manifest: '/manifest.json',
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#f59e0b',
 };
 
 export default function RootLayout({

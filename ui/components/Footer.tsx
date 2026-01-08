@@ -1,26 +1,28 @@
+import SocialIcons from './icons/SocialIcons'
+
 export default function Footer() {
   return (
     <footer className="border-t border-slate-200 mt-20 bg-white">
-      <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-slate-700">
-        <div>
-          <div className="text-lg font-semibold text-slate-800">Takeoffs360</div>
-          <div className="mt-2 text-slate-600">Accurate, fast construction quantity takeoffs.</div>
-        </div>
+      <div className="max-w-6xl mx-auto px-6 py-8 text-sm text-slate-700">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div />
 
-        <div>
-          <div className="font-medium">Quick Links</div>
-          <ul className="mt-2 space-y-1">
-            <li><a href="/services" className="hover:underline">Services</a></li>
-            <li><a href="/pricing" className="hover:underline">Pricing</a></li>
-            <li><a href="/about" className="hover:underline">About</a></li>
-            <li><a href="/contact" className="hover:underline">Contact</a></li>
-          </ul>
+          <div className="flex items-center gap-6">
+            <div>
+              {/* Social icons component */}
+              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+              {/* @ts-ignore */}
+              <SocialIcons links={[
+                { href: 'https://www.linkedin.com', label: 'Takeoffs360 on LinkedIn', type: 'linkedin' },
+                { href: 'https://www.facebook.com', label: 'Takeoffs360 on Facebook', type: 'facebook' },
+                { href: 'https://www.twitter.com', label: 'Takeoffs360 on Twitter', type: 'twitter' },
+              ]} />
+            </div>
+          </div>
         </div>
-
-        <div>
-          <div className="font-medium">Contact</div>
-          <div className="mt-2">info@yourwebsite.com</div>
-          <div className="mt-1">600.334.6151</div>
+        <div className="mt-4 text-xs">
+          <a href="/privacy" className="hover:underline mr-4">Privacy</a>
+          <a href="/terms" className="hover:underline">Terms</a>
         </div>
       </div>
 
