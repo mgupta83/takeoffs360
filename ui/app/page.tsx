@@ -7,16 +7,61 @@ import {
 } from 'lucide-react'
 
 const divisions = [
-  { id: '01', title: 'General Requirements', summary: 'Administrative and procedural rules, including quality control and site management.', icon: <ClipboardCheck /> },
-  { id: '02', title: 'Existing Conditions', summary: 'Pre-construction site assessment, demolition, and remediation of hazardous materials.', icon: <HardHat /> },
-  { id: '03', title: 'Concrete', summary: 'Formwork, reinforcing, cast-in-place, and precast concrete structural elements.', icon: <Layers /> },
-  { id: '04', title: 'Masonry', summary: 'Brick, stone, CMU (block), and specialized glass block construction.', icon: <BrickWall /> },
-  { id: '05', title: 'Metals', summary: 'Structural steel framing, metal joists, decking, and ornamental handrails.', icon: <Component /> },
-  { id: '06', title: 'Wood, Plastics, & Composites', summary: 'Rough carpentry, structural framing, cabinetry, and plastic fabrications.', icon: <TreePine /> },
-  { id: '07', title: 'Thermal & Moisture Protection', summary: 'Waterproofing, air barriers, insulation, roofing, and firestopping systems.', icon: <ShieldCheck /> },
-  { id: '08', title: 'Openings', summary: 'Installation of doors, windows, skylights, and hardware systems.', icon: <DoorOpen /> },
-  { id: '09', title: 'Finishes', summary: 'Interior/exterior painting, drywall, tile, wood flooring, and ceilings.', icon: <Palette /> },
-  { id: '10', title: 'Specialties', summary: 'Visual displays, signage, lockers, and prefabricated partitions.', icon: <PackageSearch /> },
+  { id: '03', title: 'Concrete', icon: <Layers />, items: [
+    { code: '031000', description: 'Concrete Formwork' },
+    { code: '032000', description: 'Concrete Reinforcing' },
+    { code: '033000', description: 'Cast-in-Place Concrete' },
+    { code: '', description: 'All Site Work Concrete Quantity' }
+  ] },
+  { id: '04', title: 'Masonry', icon: <BrickWall />, items: [
+    { code: '040500', description: 'Masonry Materials' },
+    { code: '040513', description: 'Mortaring' },
+    { code: '040519', description: 'Anchors' },
+    { code: '042200', description: 'Concrete Blocks' },
+    { code: '044001', description: 'Natural Stone' },
+    { code: '044300', description: 'Stone Masonry' },
+    { code: '047000', description: 'Brick/Stone Facing' },
+    { code: '047200', description: 'Cast Stone Masonry' }
+  ] },
+  { id: '06', title: 'Wood, Plastics and Composites', icon: <TreePine />, items: [
+    { code: '060120/060121', description: 'Cabinets' },
+    { code: '060500', description: 'Lumber & Timber' },
+    { code: '060523', description: 'Framing Hardware' }
+  ] },
+  { id: '07', title: 'Thermal and Moisture Protection', icon: <ShieldCheck />, items: [
+    { code: '070101', description: 'Waterproofing' },
+    { code: '070140', description: 'Roofing' },
+    { code: '072100', description: 'Thermal Insulation' },
+    { code: '072400', description: 'EIFS' },
+    { code: '072500', description: 'Air & Vapor Barriers' },
+    { code: '074600', description: 'Siding' },
+    { code: '077123', description: 'Gutters & Downspouts' }
+  ] },
+  { id: '08', title: 'Openings', icon: <DoorOpen />, items: [
+    { code: '', description: 'All Doors & Windows in General' }
+  ] },
+  { id: '09', title: 'Finishes', icon: <Palette />, items: [
+    { code: '092000', description: 'Drywall & Metal Framing' },
+    { code: '093000/096000', description: 'Flooring' },
+    { code: '095000', description: 'Ceiling' },
+    { code: '098000', description: 'Painting & Wall Covering' }
+  ] },
+  { id: '10', title: 'Specialties', icon: <PackageSearch />, items: [
+    { code: '101100', description: 'Chalk/Marker/Tack Boards' },
+    { code: '101400', description: 'Signage' },
+    { code: '102113', description: 'Toilet Partitions' },
+    { code: '102123', description: 'Cubicles' },
+    { code: '102600', description: 'Wall & Door Protection' },
+    { code: '102813', description: 'Bathroom Accessories' },
+    { code: '102819', description: 'Tub & Shower Doors' },
+    { code: '104400', description: 'Fire Protection Specialties' },
+    { code: '105100', description: 'Lockers' }
+  ] },
+  { id: '32', title: 'Exterior Improvements', icon: <HardHat />, items: [
+    { code: '321000', description: 'Bases / Paving / Asphalt / Concrete' },
+    { code: '323000', description: 'Site Improvements' },
+    { code: '323100', description: 'Fences & Gates' }
+  ] },
 ]
 
 export default function Home() {
@@ -31,6 +76,42 @@ export default function Home() {
               { src: '/pic-2.png', alt: 'Takeoffs360 plan view', caption: 'Let us build estimates for you — faster, accurate, delivered.' }
             ]}
           />
+        </div>
+      </section>
+
+      {/* Trades We Serve */}
+      <section id="trades" className="bg-zinc-50">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <header className="mb-12 text-center">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900">Trades We Serve</h2>
+            <p className="mt-4 text-lg text-slate-700 max-w-3xl mx-auto">Comprehensive quantity takeoffs across major CSI divisions — built for speed, accuracy, and value.</p>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {divisions.map((div) => (
+              <article key={div.id} className="group bg-white border border-zinc-200 p-6 shadow-sm hover:shadow-md transition-all duration-200">
+                <div className="flex items-center gap-4 mb-4 flex-wrap">
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    <div className="p-2 bg-amber-500 text-black rounded flex-shrink-0">{React.isValidElement(div.icon) ? React.cloneElement(div.icon as React.ReactElement<any>, { size: 20, strokeWidth: 2 } as any) : null}</div>
+                    <div className="text-sm font-black whitespace-nowrap">DIV {div.id}</div>
+                  </div>
+                  <h3 className="text-lg font-semibold flex-1 min-w-0">{div.title}</h3>
+                </div>
+
+                <details className="text-zinc-600">
+                  <summary className="cursor-pointer font-medium text-sm mb-2">View Services</summary>
+                  <ul className="list-disc list-inside text-sm space-y-1">
+                    {div.items.map((item, index) => (
+                      <li key={index}>
+                        {item.code && <span className="font-mono text-xs bg-zinc-100 px-1 py-0.5 rounded mr-2">{item.code}</span>}
+                        {item.description}
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -67,32 +148,6 @@ export default function Home() {
               <h3 className="mt-3 font-semibold">Dedicated Teams</h3>
               <p className="mt-2 text-sm text-slate-600">A single point of contact and consistent estimator teams.</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Services (detailed divisions) */}
-      <section id="services" className="bg-zinc-50">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <header className="mb-12 text-center">
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900">Our Services</h2>
-            <p className="mt-4 text-lg text-slate-700 max-w-3xl mx-auto">Comprehensive quantity takeoffs across major CSI divisions — built for speed, accuracy, and value.</p>
-          </header>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {divisions.map((div) => (
-              <article key={div.id} className="group flex flex-col bg-white border border-zinc-200 p-6 shadow-sm hover:shadow-md transition-all duration-200">
-                <div className="flex items-center gap-4 mb-4 flex-wrap">
-                  <div className="flex items-center gap-3 flex-shrink-0">
-                    <div className="p-2 bg-amber-500 text-black rounded flex-shrink-0">{React.isValidElement(div.icon) ? React.cloneElement(div.icon as React.ReactElement<any>, { size: 20, strokeWidth: 2 } as any) : null}</div>
-                    <div className="text-sm font-black whitespace-nowrap">DIV {div.id}</div>
-                  </div>
-                  <h3 className="text-lg font-semibold flex-1 min-w-0">{div.title}</h3>
-                </div>
-
-                <p className="text-zinc-600 text-sm">{div.summary}</p>
-              </article>
-            ))}
           </div>
         </div>
       </section>
