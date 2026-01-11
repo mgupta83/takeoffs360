@@ -1,7 +1,7 @@
 "use client";
 
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import Logo from './Logo';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -20,10 +20,19 @@ export default function Header() {
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
         <div className="flex items-center gap-4">
           <a href="/#who" className="flex items-center" aria-label="Takeoffs360 home">
-            <Logo />
+            <div className="relative w-32 sm:w-40 h-12 sm:h-16 overflow-hidden">
+              <Image
+                src="/logo-3.png"
+                alt="Takeoffs360 logo"
+                fill
+                priority
+                sizes="(max-width: 640px) 128px, 160px"
+                className="object-cover object-center"
+              />
+            </div>
           </a>
 
-          <span className="hidden sm:inline text-sm text-slate-500">Accurate quantity takeoffs</span>
+          <span className="hidden sm:inline text-sm font-semibold text-transparent bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text tracking-wide">Bid More, Win More</span>
         </div>
 
         <div className="flex items-center gap-6">
