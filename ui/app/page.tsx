@@ -69,7 +69,7 @@ export default function Home() {
     <main>
       {/* Hero Carousel at top */}
       <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-8">
+        <div className="max-w-6xl mx-auto px-6 py-4">
           <HeroCarousel
             slides={[
               { src: '/pic-1.png', alt: 'Takeoffs360 software view', caption: 'Bid more. Win more. Build smarter.' },
@@ -79,31 +79,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Value Proposition */}
+      <section className="bg-gradient-to-r from-amber-500 to-orange-600 py-6">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h1 className="text-xl sm:text-3xl lg:text-4xl font-black text-white leading-tight">
+            Turn Drawings Into Winning Bids.<br />
+            <span className="text-amber-100">Faster. Smarter.</span>
+          </h1>
+        </div>
+      </section>
+
       {/* Trades We Serve */}
       <section id="trades" className="bg-zinc-50">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <header className="mb-12 text-center">
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900">Trades We Serve</h2>
-            <p className="mt-4 text-lg text-slate-700 max-w-3xl mx-auto">Comprehensive quantity takeoffs across major CSI divisions — built for speed, accuracy, and value.</p>
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <header className="mb-8 text-center">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Trades We Serve</h2>
+            <p className="mt-4 text-base text-slate-700 max-w-3xl mx-auto">Comprehensive quantity takeoffs across major CSI divisions — built for speed, accuracy, and value.</p>
           </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {divisions.map((div) => (
-              <article key={div.id} className="group bg-white border border-zinc-200 p-6 shadow-sm hover:shadow-md transition-all duration-200">
-                <div className="flex items-center gap-4 mb-4 flex-wrap">
-                  <div className="flex items-center gap-3 flex-shrink-0">
-                    <div className="p-2 bg-amber-500 text-black rounded flex-shrink-0">{React.isValidElement(div.icon) ? React.cloneElement(div.icon as React.ReactElement<any>, { size: 20, strokeWidth: 2 } as any) : null}</div>
-                    <div className="text-sm font-black whitespace-nowrap">DIV {div.id}</div>
+              <article key={div.id} className="group bg-white border border-zinc-200 p-4 shadow-sm hover:shadow-md transition-all duration-200">
+                <div className="flex items-center gap-3 mb-3 flex-wrap">
+                  <div className="flex items-center gap-2 flex-shrink-0">
+                    <div className="p-1.5 bg-amber-500 text-black rounded flex-shrink-0">{React.isValidElement(div.icon) ? React.cloneElement(div.icon as React.ReactElement<any>, { size: 16, strokeWidth: 2 } as any) : null}</div>
+                    <div className="text-xs font-black whitespace-nowrap">DIV {div.id}</div>
                   </div>
-                  <h3 className="text-lg font-semibold flex-1 min-w-0">{div.title}</h3>
+                  <h3 className="text-base font-semibold flex-1 min-w-0">{div.title}</h3>
                 </div>
 
                 <details className="text-zinc-600">
-                  <summary className="cursor-pointer font-medium text-sm mb-2">View Services</summary>
-                  <ul className="list-disc list-inside text-sm space-y-1">
+                  <summary className="cursor-pointer font-medium text-xs mb-1">View Services</summary>
+                  <ul className="list-disc list-inside text-xs space-y-0.5">
                     {div.items.map((item, index) => (
                       <li key={index}>
-                        {item.code && <span className="font-mono text-xs bg-zinc-100 px-1 py-0.5 rounded mr-2">{item.code}</span>}
+                        {item.code && <span className="font-mono text-xs bg-zinc-100 px-1 py-0.5 rounded mr-1">{item.code}</span>}
                         {item.description}
                       </li>
                     ))}

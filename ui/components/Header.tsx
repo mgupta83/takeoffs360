@@ -32,7 +32,7 @@ export default function Header() {
             </div>
           </a>
 
-          <span className="text-xs sm:text-sm font-semibold text-transparent bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text tracking-wide">Bid More, Win More</span>
+          <span className="hidden sm:inline text-sm font-semibold text-transparent bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text tracking-wide">Bid More, Win More</span>
         </div>
 
         <div className="flex items-center gap-6">

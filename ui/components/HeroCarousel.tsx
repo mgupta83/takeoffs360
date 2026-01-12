@@ -82,7 +82,7 @@ export default function HeroCarousel(props: Readonly<{ slides?: readonly Slide[]
         >
         {slides.map((s) => (
           <div key={s.src} className="relative w-full flex-shrink-0" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-            <Image src={s.src} alt={s.alt} width={1200} height={720} className="w-full h-[360px] sm:h-[320px] md:h-[420px] object-cover" />
+            <Image src={s.src} alt={s.alt} width={1200} height={720} className="w-full h-[240px] sm:h-[200px] md:h-[280px] object-cover" />
             {/* Gradient overlay for legibility */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent pointer-events-none" />
             <div className="absolute left-6 bottom-6 max-w-[80%]">
