@@ -16,7 +16,7 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header className="border-b border-slate-200">
+    <header className="bg-white shadow-sm border-b border-slate-200/50">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
         <div className="flex items-center gap-4">
           <a href="/#who" className="flex items-center" aria-label="Takeoffs360 home">
@@ -37,9 +37,8 @@ export default function Header() {
 
         <div className="flex items-center gap-6">
           <nav className="hidden md:flex items-center gap-6 text-slate-600">
-            <a href="/#who" className="hover:text-slate-900">Who Are We</a>
-            <a href="/#why" className="hover:text-slate-900">Why Choose Us</a>
-            <a href="/#services" className="hover:text-slate-900">Services</a>
+            <a href="/#trades" className="hover:text-slate-900">Trades We Serve</a>
+            <a href="/#approach" className="hover:text-slate-900">Our Approach</a>
             <a href="/contact" className="hover:text-slate-900">Contact</a>
           </nav>
 
@@ -68,9 +67,8 @@ export default function Header() {
       >
         <div className="max-w-6xl mx-auto px-6 py-4 space-y-4">
             <nav className="flex flex-col gap-3 text-slate-700">
-            <a href="/#who" className="py-2 px-3 rounded hover:bg-slate-50">Who Are We</a>
-            <a href="/#why" className="py-2 px-3 rounded hover:bg-slate-50">Why Choose Us</a>
-            <a href="/#services" className="py-2 px-3 rounded hover:bg-slate-50">Services</a>
+            <a href="/#trades" className="py-2 px-3 rounded hover:bg-slate-50">Trades We Serve</a>
+            <a href="/#approach" className="py-2 px-3 rounded hover:bg-slate-50">Our Approach</a>
             <a href="/contact" className="py-2 px-3 rounded hover:bg-slate-50">Contact</a>
           </nav>
 

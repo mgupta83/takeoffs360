@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
-type Slide = Readonly<{ src: string; alt: string; caption: string }>;
+type Slide = Readonly<{ src?: string; alt?: string; caption?: string; content?: React.ReactNode }>;
 
 export default function HeroCarousel(props: Readonly<{ slides?: readonly Slide[] }>) {
   const slides: readonly Slide[] = props.slides ?? [];
@@ -80,20 +80,26 @@ export default function HeroCarousel(props: Readonly<{ slides?: readonly Slide[]
             transition: isDragging ? 'none' : 'transform 700ms ease'
           }}
         >
-        {slides.map((s) => (
-          <div key={s.src} className="relative w-full flex-shrink-0" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-            <Image src={s.src} alt={s.alt} width={1200} height={720} className="w-full h-[240px] sm:h-[200px] md:h-[280px] object-cover" />
-            {/* Gradient overlay for legibility */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent pointer-events-none" />
-            <div className="absolute left-6 bottom-6 max-w-[80%]">
-              <div className="inline-flex items-start gap-3 bg-gradient-to-r from-black/70 via-black/40 to-black/20 px-4 py-3 rounded-xl shadow-lg border border-black/10 backdrop-blur-md">
-                <div className="w-1.5 h-10 bg-amber-500 rounded" aria-hidden />
-                <div>
-                  <p className="text-amber-200 text-xs uppercase tracking-wide mb-1">Takeoffs360</p>
-                  <h3 className="text-white text-lg sm:text-xl md:text-2xl font-extrabold leading-tight drop-shadow-md">{s.caption}</h3>
+        {slides.map((s, i) => (
+          <div key={s.src || i} className="relative w-full flex-shrink-0" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+            {s.content ? (
+              s.content
+            ) : (
+              <>
+                <Image src={s.src!} alt={s.alt!} width={1200} height={720} className="w-full h-[240px] sm:h-[200px] md:h-[280px] object-cover" />
+                {/* Gradient overlay for legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent pointer-events-none" />
+                <div className="absolute left-6 bottom-6 max-w-[80%]">
+                  <div className="inline-flex items-start gap-3 bg-gradient-to-r from-black/70 via-black/40 to-black/20 px-4 py-3 rounded-xl shadow-lg border border-black/10 backdrop-blur-md">
+                    <div className="w-1.5 h-10 bg-amber-500 rounded" aria-hidden />
+                    <div>
+                      <p className="text-amber-200 text-xs uppercase tracking-wide mb-1">Takeoffs360</p>
+                      <h3 className="text-white text-lg sm:text-xl md:text-2xl font-extrabold leading-tight drop-shadow-md">{s.caption!}</h3>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </>
+            )}
           </div>
         ))}
         </div>
@@ -111,7 +117,7 @@ export default function HeroCarousel(props: Readonly<{ slides?: readonly Slide[]
       {/* Indicators */}
       <div className="absolute right-4 top-4 flex gap-2">
         {slides.map((s, i) => (
-          <button key={s.src} onClick={() => go(i)} className={`w-2 h-2 rounded-full ${i === index ? 'bg-amber-500' : 'bg-white/80'}`} aria-label={`Go to slide ${i+1}`} />
+          <button key={s.src || i} onClick={() => go(i)} className={`w-2 h-2 rounded-full ${i === index ? 'bg-amber-500' : 'bg-white/80'}`} aria-label={`Go to slide ${i+1}`} />
         ))}
       </div>
     </div>

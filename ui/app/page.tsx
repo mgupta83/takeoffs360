@@ -1,9 +1,9 @@
-import HeroCarousel from '@/components/HeroCarousel'
 import React from 'react'
+import Link from 'next/link'
 import {
   ClipboardCheck, HardHat, Layers, BrickWall,
   Component, TreePine, ShieldCheck, DoorOpen,
-  Palette, PackageSearch
+  Palette, PackageSearch, Wrench, Building, Home as HomeIcon, Hammer
 } from 'lucide-react'
 
 const divisions = [
@@ -57,7 +57,7 @@ const divisions = [
     { code: '104400', description: 'Fire Protection Specialties' },
     { code: '105100', description: 'Lockers' }
   ] },
-  { id: '32', title: 'Exterior Improvements', icon: <HardHat />, items: [
+  { id: '32', title: 'Exterior Improvements', icon: <Hammer />, items: [
     { code: '321000', description: 'Bases / Paving / Asphalt / Concrete' },
     { code: '323000', description: 'Site Improvements' },
     { code: '323100', description: 'Fences & Gates' }
@@ -67,35 +67,62 @@ const divisions = [
 export default function Home() {
   return (
     <main>
-      {/* Hero Carousel at top */}
+      {/* Hero Section */}
       <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          <HeroCarousel
-            slides={[
-              { src: '/pic-1.png', alt: 'Takeoffs360 software view', caption: 'Bid more. Win more. Build smarter.' },
-              { src: '/pic-2.png', alt: 'Takeoffs360 plan view', caption: 'Let us build estimates for you — faster, accurate, delivered.' }
-            ]}
-          />
-        </div>
-      </section>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-stretch bg-slate-50 rounded-2xl shadow-lg overflow-hidden">
+            {/* Left Side: Heading and Description */}
+            <div className="flex-1 text-center lg:text-left p-8">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-tight mb-6">
+                Turn Drawings Into<br />
+                <span className="text-amber-500">Winning Bids.</span>
+              </h1>
+              <p className="text-lg sm:text-xl text-slate-700 leading-relaxed mb-8">
+                At Takeoffs360, we partner with Contractors, Developers, and Investors to build highly detailed and auditable takeoffs with higher accuracy and faster turnaround to help them win more bids.
+              </p>
+              <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+                <span className="text-slate-800 px-4 py-2 rounded-full text-sm font-semibold border border-slate-300">Flexible Engagement Model</span>
+                <span className="text-slate-800 px-4 py-2 rounded-full text-sm font-semibold border border-slate-300">Dedicated Point of Contact</span>
+                <span className="text-slate-800 px-4 py-2 rounded-full text-sm font-semibold border border-slate-300">Secure Data Handling</span>
+                <span className="text-slate-800 px-4 py-2 rounded-full text-sm font-semibold border border-slate-300">Advanced Technology & Processes</span>
+              </div>
+            </div>
 
-      {/* Value Proposition */}
-      <section className="bg-gradient-to-r from-amber-500 to-orange-600 py-6">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-xl sm:text-3xl lg:text-4xl font-black text-white leading-tight">
-            Turn Drawings Into Winning Bids.<br />
-            <span className="text-amber-100">Faster. Smarter.</span>
-          </h1>
+            {/* Right Side: Image and Content */}
+            <div className="flex-1 p-8 flex flex-col">
+              {/* Image Container */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-6">
+                <img
+                  src="/pic-2.png"
+                  alt="Takeoffs360 plan view"
+                  className="w-full h-48 lg:h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              </div>
+
+              {/* Text Content */}
+              <div className="mb-4 text-center">
+                <p className="text-slate-700 text-base font-normal italic">We work with all kinds of construction and infrastructure projects, from small renovations to large-scale developments.</p>
+              </div>
+              <div className="text-center">
+                <Link href="/contact">
+                  <button className="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition duration-300 text-base">
+                    Contact Us to Get a Free Trial
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Trades We Serve */}
       <section id="trades" className="bg-zinc-50">
         <div className="max-w-7xl mx-auto px-6 py-12">
-          <header className="mb-8 text-center">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Trades We Serve</h2>
-            <p className="mt-4 text-base text-slate-700 max-w-3xl mx-auto">Comprehensive quantity takeoffs across major CSI divisions — built for speed, accuracy, and value.</p>
-          </header>
+          <div className="mb-8 text-center bg-gradient-to-br from-slate-700 to-slate-800 py-3 rounded-xl shadow-lg border border-slate-600/20">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 drop-shadow-md">Trades We Serve</h2>
+            <p className="mt-4 text-base text-slate-200 max-w-3xl mx-auto drop-shadow-sm">Comprehensive quantity takeoffs across major CSI divisions — built for speed, accuracy, and value.</p>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {divisions.map((div) => (
@@ -125,22 +152,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Who Are We */}
-      <section id="who" className="bg-white">
+      {/* Our Approach */}
+      <section id="approach" className="bg-white">
         <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="text-center">
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900">Who Are We</h2>
-            <p className="mt-4 text-lg text-slate-700 max-w-3xl mx-auto">Takeoffs360 provides contractor-focused quantity takeoffs and estimating services backed by experienced estimators and modern workflows. We turn drawings into accurate, actionable quantities so your team can respond faster and bid smarter.</p>
-            {/* CTAs removed to simplify header interactions */}
+          <div className="text-center mb-8 bg-gradient-to-br from-slate-900 to-black py-12 rounded-2xl shadow-2xl border border-slate-600/30">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-700 drop-shadow-lg">Our Approach</h2>
+            <p className="mt-4 text-lg text-slate-700 max-w-3xl mx-auto drop-shadow-md">Takeoffs360 provides contractor-focused quantity takeoffs and estimating services backed by experienced estimators and modern workflows. We turn drawings into accurate, actionable quantities so your team can respond faster and bid smarter.</p>
           </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section id="why" className="bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 text-center">Why Choose Us</h2>
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div className="rounded bg-white p-6 shadow-sm text-center">
               <div className="text-amber-500 text-3xl font-bold">Accuracy</div>
               <h3 className="mt-3 font-semibold">Trusted Estimates</h3>
