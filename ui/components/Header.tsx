@@ -32,14 +32,14 @@ export default function Header() {
             </div>
           </a>
 
-          <span className="hidden sm:inline text-sm font-semibold text-transparent bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text tracking-wide">Bid More, Win More</span>
+          <span className="hidden sm:inline text-sm font-semibold text-transparent bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text drop-shadow-md tracking-wide">Bid More, Win More</span>
         </div>
 
         <div className="flex items-center gap-6">
           <nav className="hidden md:flex items-center gap-6 text-slate-600">
             <a href="/#trades" className="hover:text-slate-900">Services</a>
             <a href="/#approach" className="hover:text-slate-900">Delivery</a>
-            <a href="/contact" className="bg-amber-500 hover:bg-amber-600 text-white font-medium px-4 py-2 rounded-lg transition duration-300">Contact Us</a>
+            <a href="/contact" className="hover:text-slate-900">Contact</a>
           </nav>
 
           {/* CTAs removed - use Contact page link in nav */}
@@ -72,7 +72,7 @@ export default function Header() {
             </nav>
 
             <div className="text-center">
-              <a href="/contact" className="bg-amber-500 hover:bg-amber-600 text-white font-medium py-3 px-8 rounded-lg inline-block transition-all duration-200 text-lg shadow-lg">Contact Us</a>
+              <a href="/contact" className="bg-amber-500 hover:bg-amber-600 text-white font-medium py-3 px-8 rounded-lg inline-block transition-all duration-200 text-lg shadow-lg">Contact</a>
             </div>
         </div>
       </div>

@@ -234,6 +234,19 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Call to Action Section */}
+      <section className="bg-slate-50 py-16">
+        <div className="max-w-4xl mx-auto text-center px-6">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800 drop-shadow-md">Ready to Get Started?</h2>
+          <p className="text-lg sm:text-xl mb-8 max-w-2xl mx-auto text-slate-700 drop-shadow-sm">
+            Reach out to us for a free trial and discover how we can transform your drawings into winning bids.
+          </p>
+          <a href="/contact" className="inline-block bg-amber-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-amber-600 transition duration-300 shadow-lg text-lg">
+            Contact Us
+          </a>
+        </div>
+      </section>
     </main>
   )
 }
