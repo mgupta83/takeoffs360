@@ -191,8 +191,8 @@ export default function ContactForm() {
     <section className="max-w-5xl mx-auto px-6 py-20">
       {/* Load reCAPTCHA script for this page only after hydration */}
       <Script src="https://www.google.com/recaptcha/api.js" strategy="afterInteractive" />
-      <h1 className="text-4xl font-black mb-4">Contact Us</h1>
-      <p className="text-lg text-zinc-600 mb-8">Choose an option below to reach us quickly.</p>
+      <h1 className="text-4xl font-black mb-4">Get In Touch</h1>
+      <p className="text-lg text-zinc-600 mb-8">Got construction drawings? Let's turn them into winning bids together.</p>
 
       <div className="grid grid-cols-1 gap-8">
         {/* Contact row with two columns: Email (col1) and Phone (col2) */}
@@ -202,7 +202,7 @@ export default function ContactForm() {
             <div className="w-full md:flex-1 flex items-center gap-3">
               <Mail className="h-8 w-8 text-amber-500" />
               <div>
-                <div className="text-sm font-semibold">Email</div>
+                <div className="text-sm font-semibold">Email Us</div>
                 <div className="mt-1 flex items-center gap-2">
                   <div className="text-zinc-700 font-medium mr-2">{EMAIL}</div>
                   <span
@@ -227,7 +227,7 @@ export default function ContactForm() {
             <div className="w-full md:flex-1 flex items-center gap-3">
               <Phone className="h-8 w-8 text-amber-500" />
               <div>
-                <div className="text-sm font-semibold">Phone</div>
+                <div className="text-sm font-semibold">Call Us</div>
                 <div className="mt-1 flex items-center gap-2">
                   <div className="text-zinc-700 font-medium mr-2">{PHONE}</div>
                   <div className="flex items-center gap-2">
@@ -263,8 +263,8 @@ export default function ContactForm() {
 
         {/* Contact form with title and subtext */}
         <div className="bg-white p-6 rounded-lg shadow-sm border border-zinc-100">
-          <h2 className="text-2xl font-semibold">Send us a message</h2>
-          <p className="text-sm text-zinc-600 mt-1 mb-4">and we'll revert back within 24 hours</p>
+          <h2 className="text-2xl font-semibold">Let's Start a Conversation</h2>
+          <p className="text-sm text-zinc-600 mt-1 mb-4">Expect a response within 24 hours.</p>
 
           {statusMessage && (
             <div className={`mb-4 rounded px-4 py-3 text-sm ${statusType === 'error' ? 'border border-red-200 bg-red-50 text-red-800' : 'border border-green-200 bg-green-50 text-green-800'}`} role="status">
