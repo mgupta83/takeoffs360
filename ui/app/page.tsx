@@ -117,11 +117,11 @@ export default function Home() {
       </section>
 
       {/* Trades We Serve */}
-      <section id="trades" className="bg-zinc-50">
+      <section id="trades" className="bg-zinc-50 mt-16">
         <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="mb-8 text-center bg-gradient-to-br from-slate-700 to-slate-800 py-3 rounded-xl shadow-lg border border-slate-600/20">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 drop-shadow-md">Trades We Serve</h2>
-            <p className="mt-4 text-base text-slate-200 max-w-3xl mx-auto drop-shadow-sm">Comprehensive quantity takeoffs across major CSI divisions — built for speed, accuracy, and value.</p>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-gray-700 to-gray-900 bg-clip-text text-transparent drop-shadow-md">Trades We Serve</h2>
+            <p className="mt-4 text-lg text-slate-700 max-w-3xl mx-auto">Comprehensive quantity takeoffs across major CSI divisions — built for speed, accuracy, and value.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -155,27 +155,81 @@ export default function Home() {
       {/* Our Approach */}
       <section id="approach" className="bg-white">
         <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="text-center mb-8 bg-gradient-to-br from-slate-900 to-black py-12 rounded-2xl shadow-2xl border border-slate-600/30">
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-700 drop-shadow-lg">Our Approach</h2>
-            <p className="mt-4 text-lg text-slate-700 max-w-3xl mx-auto drop-shadow-md">Takeoffs360 provides contractor-focused quantity takeoffs and estimating services backed by experienced estimators and modern workflows. We turn drawings into accurate, actionable quantities so your team can respond faster and bid smarter.</p>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-gray-700 to-gray-900 bg-clip-text text-transparent drop-shadow-md">How We Deliver Quality</h2>
+            <p className="mt-4 text-lg text-slate-700 max-w-3xl mx-auto">Our streamlined process delivers high-quality results through meticulous attention to detail and robust quality assurance at every step.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="rounded bg-white p-6 shadow-sm text-center">
-              <div className="text-amber-500 text-3xl font-bold">Accuracy</div>
-              <h3 className="mt-3 font-semibold">Trusted Estimates</h3>
-              <p className="mt-2 text-sm text-slate-600">Trade-specific takeoffs and double-checked quantities.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-3xl mb-4">🔒</div>
+              <h3 className="text-xl font-semibold mb-2">Secured Data Handling</h3>
+              <p className="text-slate-600">Enterprise-grade security protocols protect your sensitive project data.</p>
             </div>
 
-            <div className="rounded bg-white p-6 shadow-sm text-center">
-              <div className="text-amber-500 text-3xl font-bold">Speed</div>
-              <h3 className="mt-3 font-semibold">Fast Turnarounds</h3>
-              <p className="mt-2 text-sm text-slate-600">Next-day and overnight delivery options available.</p>
+            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-3xl mb-4">📋</div>
+              <h3 className="text-xl font-semibold mb-2">Standardized Templates & SOPs</h3>
+              <p className="text-slate-600">Consistent takeoff templates and standard operating procedures promote accuracy.</p>
             </div>
 
-            <div className="rounded bg-white p-6 shadow-sm text-center">
-              <div className="text-amber-500 text-3xl font-bold">Support</div>
-              <h3 className="mt-3 font-semibold">Dedicated Teams</h3>
-              <p className="mt-2 text-sm text-slate-600">A single point of contact and consistent estimator teams.</p>
+            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-3xl mb-4">✅</div>
+              <h3 className="text-xl font-semibold mb-2">Multi-Level Quality Control</h3>
+              <p className="text-slate-600">Rigorous checks at multiple stages minimize errors and ensure high accuracy.</p>
+            </div>
+
+            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-3xl mb-4">🔄</div>
+              <h3 className="text-xl font-semibold mb-2">Ongoing Revision Support</h3>
+              <p className="text-slate-600">Continuous support throughout the project lifecycle for all revisions.</p>
+            </div>
+
+            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-3xl mb-4">📊</div>
+              <h3 className="text-xl font-semibold mb-2">Structured Deliverables & BOQs</h3>
+              <p className="text-slate-600">Organized bills of quantities and comprehensive project documentation.</p>
+            </div>
+
+            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-3xl mb-4">🔍</div>
+              <h3 className="text-xl font-semibold mb-2">Detailed Quantity Extraction</h3>
+              <p className="text-slate-600">Precise measurement and extraction of all project quantities.</p>
+            </div>
+
+            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-3xl mb-4">💰</div>
+              <h3 className="text-xl font-semibold mb-2">Clear Cost Visibility</h3>
+              <p className="text-slate-600">Transparent cost breakdowns for informed decision-making.</p>
+            </div>
+
+            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-3xl mb-4">🤝</div>
+              <h3 className="text-xl font-semibold mb-2">Easy Collaboration</h3>
+              <p className="text-slate-600">Seamless integration across various platforms and tools.</p>
+            </div>
+
+            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-3xl mb-4">🛡️</div>
+              <h3 className="text-xl font-semibold mb-2">Strong Confidentiality</h3>
+              <p className="text-slate-600">Strict NDA and data security practices protect your information.</p>
+            </div>
+
+            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-3xl mb-4">⚖️</div>
+              <h3 className="text-xl font-semibold mb-2">Flexible Engagement Models</h3>
+              <p className="text-slate-600">Affordable and adaptable pricing options to fit your needs.</p>
+            </div>
+
+            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-3xl mb-4">👤</div>
+              <h3 className="text-xl font-semibold mb-2">Dedicated Point of Contact</h3>
+              <p className="text-slate-600">A single point of contact and consistent estimator teams for seamless communication.</p>
+            </div>
+
+            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-3xl mb-4">⚙️</div>
+              <h3 className="text-xl font-semibold mb-2">Advanced Technology & Processes</h3>
+              <p className="text-slate-600">Leveraging cutting-edge tools and methodologies for superior results.</p>
             </div>
           </div>
         </div>

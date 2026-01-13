@@ -37,8 +37,8 @@ export default function Header() {
 
         <div className="flex items-center gap-6">
           <nav className="hidden md:flex items-center gap-6 text-slate-600">
-            <a href="/#trades" className="hover:text-slate-900">Trades We Serve</a>
-            <a href="/#approach" className="hover:text-slate-900">Our Approach</a>
+            <a href="/#trades" className="hover:text-slate-900">Services</a>
+            <a href="/#approach" className="hover:text-slate-900">Delivery</a>
             <a href="/contact" className="hover:text-slate-900">Contact</a>
           </nav>
 
@@ -67,8 +67,8 @@ export default function Header() {
       >
         <div className="max-w-6xl mx-auto px-6 py-4 space-y-4">
             <nav className="flex flex-col gap-3 text-slate-700">
-            <a href="/#trades" className="py-2 px-3 rounded hover:bg-slate-50">Trades We Serve</a>
-            <a href="/#approach" className="py-2 px-3 rounded hover:bg-slate-50">Our Approach</a>
+            <a href="/#trades" className="py-2 px-3 rounded hover:bg-slate-50">Services</a>
+            <a href="/#approach" className="py-2 px-3 rounded hover:bg-slate-50">Delivery</a>
             <a href="/contact" className="py-2 px-3 rounded hover:bg-slate-50">Contact</a>
           </nav>
 
