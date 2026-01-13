@@ -237,7 +237,7 @@ export default function ContactForm() {
                       className="inline-flex items-center justify-center h-7 px-3 rounded bg-amber-50 text-amber-600 border border-amber-100 hover:bg-amber-100 text-sm gap-2"
                     >
                       <PhoneCall className="h-4 w-4" />
-                      <span>Call</span>
+                      <span>Call Now</span>
                     </a>
 
                     <span
