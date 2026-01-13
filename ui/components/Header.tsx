@@ -39,7 +39,7 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-6 text-slate-600">
             <a href="/#trades" className="hover:text-slate-900">Services</a>
             <a href="/#approach" className="hover:text-slate-900">Delivery</a>
-            <a href="/contact" className="hover:text-slate-900">Contact</a>
+            <a href="/contact" className="bg-amber-500 hover:bg-amber-600 text-white font-medium px-4 py-2 rounded-lg transition duration-300">Contact Us</a>
           </nav>
 
           {/* CTAs removed - use Contact page link in nav */}
@@ -63,18 +63,17 @@ export default function Header() {
       <div
         id="mobile-menu"
         ref={panelRef}
-        className={`md:hidden ${open ? 'block' : 'hidden'} border-t border-slate-100 bg-white`}
+        className={`md:hidden ${open ? 'block' : 'hidden'} bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-2xl transition-all duration-300 ease-in-out`}
       >
-        <div className="max-w-6xl mx-auto px-6 py-4 space-y-4">
-            <nav className="flex flex-col gap-3 text-slate-700">
-            <a href="/#trades" className="py-2 px-3 rounded hover:bg-slate-50">Services</a>
-            <a href="/#approach" className="py-2 px-3 rounded hover:bg-slate-50">Delivery</a>
-            <a href="/contact" className="py-2 px-3 rounded hover:bg-slate-50">Contact</a>
-          </nav>
+        <div className="max-w-6xl mx-auto px-6 py-6 space-y-6">
+            <nav className="flex flex-col gap-4 text-slate-700">
+            <a href="/#trades" className="py-3 px-4 rounded-lg hover:bg-amber-50 hover:text-amber-800 transition-all duration-200 text-lg font-medium">Services</a>
+            <a href="/#approach" className="py-3 px-4 rounded-lg hover:bg-amber-50 hover:text-amber-800 transition-all duration-200 text-lg font-medium">Delivery</a>
+            </nav>
 
-          <div>
-            <a href="/contact" className="block text-center rounded bg-amber-500 px-4 py-2 text-white font-medium hover:bg-amber-600">Request a Quote</a>
-          </div>
+            <div className="text-center">
+              <a href="/contact" className="bg-amber-500 hover:bg-amber-600 text-white font-medium py-3 px-8 rounded-lg inline-block transition-all duration-200 text-lg shadow-lg">Contact Us</a>
+            </div>
         </div>
       </div>
     </header>
