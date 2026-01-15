@@ -289,7 +289,6 @@ export default function ContactForm() {
                 <MapPin className="h-4 w-4 text-white" />
               </div>
               <div className="flex-1">
-                <div className="text-sm font-semibold text-slate-800 mb-2">Write To Us</div>
                 <div className="text-slate-800 leading-relaxed">
                   <div className="font-semibold text-sm text-slate-900 mb-2">Takeoffs360 LLC</div>
                   <div className="space-y-1">

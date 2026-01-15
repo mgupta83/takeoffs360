@@ -206,53 +206,53 @@ export default function Home() {
             <h2 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-gray-700 to-gray-900 bg-clip-text text-transparent drop-shadow-md">How We Deliver Quality</h2>
             <p className="mt-4 text-lg text-slate-700 max-w-3xl mx-auto">Our streamlined process delivers high-quality results through meticulous attention to detail and robust quality assurance at every step.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
-              <div className="text-amber-500 text-3xl mb-4">🔒</div>
-              <h3 className="text-xl font-semibold mb-2">Secure Data Handling & Confidentiality</h3>
-              <p className="text-slate-600">Enterprise-grade security protocols and strict NDA practices protect your sensitive project data.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-slate-50 p-6 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-2xl mb-3">🔒</div>
+              <h3 className="text-lg font-semibold mb-2">Secure Data Handling & Confidentiality</h3>
+              <p className="text-sm text-slate-600">Enterprise-grade security protocols and strict NDA practices protect your sensitive project data.</p>
             </div>
 
-            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
-              <div className="text-amber-500 text-3xl mb-4">📋</div>
-              <h3 className="text-xl font-semibold mb-2">Standardized Templates, SOPs & Technology</h3>
-              <p className="text-slate-600">Consistent takeoff templates, standard operating procedures, and cutting-edge tools ensure superior results.</p>
+            <div className="bg-slate-50 p-6 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-2xl mb-3">📋</div>
+              <h3 className="text-lg font-semibold mb-2">Standardized Templates, SOPs & Technology</h3>
+              <p className="text-sm text-slate-600">Consistent takeoff templates, standard operating procedures, and cutting-edge tools ensure superior results.</p>
             </div>
 
-            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
-              <div className="text-amber-500 text-3xl mb-4">✅</div>
-              <h3 className="text-xl font-semibold mb-2">Multi-Level Quality Control & Extraction</h3>
-              <p className="text-slate-600">Rigorous checks at multiple stages and precise measurement minimize errors and ensure high accuracy.</p>
+            <div className="bg-slate-50 p-6 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-2xl mb-3">✅</div>
+              <h3 className="text-lg font-semibold mb-2">Multi-Level Quality Control & Extraction</h3>
+              <p className="text-sm text-slate-600">Rigorous checks at multiple stages and precise measurement minimize errors and ensure high accuracy.</p>
             </div>
 
-            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
-              <div className="text-amber-500 text-3xl mb-4">🔄</div>
-              <h3 className="text-xl font-semibold mb-2">Ongoing Support & Collaboration</h3>
-              <p className="text-slate-600">Continuous support throughout the project lifecycle with seamless integration across platforms.</p>
+            <div className="bg-slate-50 p-6 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-2xl mb-3">🔄</div>
+              <h3 className="text-lg font-semibold mb-2">Ongoing Support & Collaboration</h3>
+              <p className="text-sm text-slate-600">Continuous support throughout the project lifecycle with seamless integration across platforms.</p>
             </div>
 
-            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
-              <div className="text-amber-500 text-3xl mb-4">📊</div>
-              <h3 className="text-xl font-semibold mb-2">Structured Deliverables & BOQs</h3>
-              <p className="text-slate-600">Organized bills of quantities and comprehensive project documentation.</p>
+            <div className="bg-slate-50 p-6 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-2xl mb-3">📊</div>
+              <h3 className="text-lg font-semibold mb-2">Structured Deliverables & BOQs</h3>
+              <p className="text-sm text-slate-600">Organized bills of quantities and comprehensive project documentation.</p>
             </div>
 
-            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
-              <div className="text-amber-500 text-3xl mb-4">💰</div>
-              <h3 className="text-xl font-semibold mb-2">Clear Cost Visibility</h3>
-              <p className="text-slate-600">Transparent cost breakdowns for informed decision-making.</p>
+            <div className="bg-slate-50 p-6 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-2xl mb-3">💰</div>
+              <h3 className="text-lg font-semibold mb-2">Clear Cost Visibility</h3>
+              <p className="text-sm text-slate-600">Transparent cost breakdowns for informed decision-making.</p>
             </div>
 
-            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
-              <div className="text-amber-500 text-3xl mb-4">⚖️</div>
-              <h3 className="text-xl font-semibold mb-2">Flexible Engagement Models</h3>
-              <p className="text-slate-600">Affordable and adaptable pricing options to fit your needs.</p>
+            <div className="bg-slate-50 p-6 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-2xl mb-3">⚖️</div>
+              <h3 className="text-lg font-semibold mb-2">Flexible Engagement Models</h3>
+              <p className="text-sm text-slate-600">Affordable and adaptable pricing options to fit your needs.</p>
             </div>
 
-            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
-              <div className="text-amber-500 text-3xl mb-4">👤</div>
-              <h3 className="text-xl font-semibold mb-2">Dedicated Point of Contact</h3>
-              <p className="text-slate-600">A single point of contact and consistent estimator teams for seamless communication.</p>
+            <div className="bg-slate-50 p-6 rounded-lg shadow-sm text-center">
+              <div className="text-amber-500 text-2xl mb-3">👤</div>
+              <h3 className="text-lg font-semibold mb-2">Dedicated Point of Contact</h3>
+              <p className="text-sm text-slate-600">A single point of contact and consistent estimator teams for seamless communication.</p>
             </div>
           </div>
         </div>
