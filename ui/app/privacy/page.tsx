@@ -9,7 +9,7 @@ export default function Privacy() {
           </p>
 
           <p className="text-slate-600 mb-6">
-            <strong>Effective Date:</strong> January 14, 2026
+            <strong>Effective Date:</strong> January 15, 2026
           </p>
 
           <p className="text-slate-600 mb-8">

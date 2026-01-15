@@ -23,7 +23,7 @@ export default function Disclaimer() {
           </p>
 
           <p className="text-slate-500 text-sm mt-8">
-            Last updated: January 14, 2026
+            Last updated: January 15, 2026
           </p>
         </div>
       </div>
