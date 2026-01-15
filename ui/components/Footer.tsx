@@ -11,8 +11,7 @@ export default function Footer() {
             {/* @ts-ignore */}
             <SocialIcons links={[
               { href: 'https://www.linkedin.com', label: 'Takeoffs360 on LinkedIn', type: 'linkedin' },
-              { href: 'https://www.facebook.com', label: 'Takeoffs360 on Facebook', type: 'facebook' },
-              { href: 'https://www.twitter.com', label: 'Takeoffs360 on Twitter', type: 'twitter' },
+              { href: 'https://x.com/takeoffs360', label: 'Takeoffs360 on Twitter', type: 'twitter' },
             ]} />
           </div>
           <div className="text-xs text-slate-500">© {new Date().getFullYear()} Takeoffs360. All rights reserved.</div>

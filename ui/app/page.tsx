@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
 import {
@@ -157,7 +159,7 @@ export default function Home() {
                   {/* Title */}
                   <h3 className="text-lg font-bold text-slate-800 mb-3 group-hover:text-slate-900 transition-colors duration-300">{div.title}</h3>
 
-                  {/* Services preview */}
+                  {/* Services list */}
                   <div className="space-y-1.5">
                     {div.items.slice(0, 2).map((item, index) => (
                       <div key={index} className="flex items-start gap-2 text-sm text-slate-600">
@@ -171,14 +173,14 @@ export default function Home() {
 
                     {/* Expandable additional services */}
                     {div.items.length > 2 && (
-                      <details className="group/details mt-2">
-                        <summary className="text-xs text-amber-600 font-medium cursor-pointer hover:text-amber-700 transition-colors duration-300 flex items-center gap-1 list-none">
+                      <details className="group/details">
+                        <summary className="text-xs text-amber-600 font-medium cursor-pointer hover:text-amber-700 transition-colors duration-300 flex items-center gap-1 list-none group-open/details:hidden">
                           <span>+{div.items.length - 2} more services</span>
-                          <svg className="w-3 h-3 transition-transform duration-300 group-open/details:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                           </svg>
                         </summary>
-                        <div className="mt-2 space-y-1.5">
+                        <div className="space-y-1.5">
                           {div.items.slice(2).map((item, index) => (
                             <div key={index + 2} className="flex items-start gap-2 text-sm text-slate-600">
                               <div className="w-1 h-1 rounded-full bg-amber-400 mt-2 flex-shrink-0"></div>
@@ -188,6 +190,19 @@ export default function Home() {
                               </div>
                             </div>
                           ))}
+                          {/* Collapse button at the end */}
+                          <div className="text-xs text-amber-600 font-medium cursor-pointer hover:text-amber-700 transition-colors duration-300 flex items-center gap-1 mt-2"
+                               onClick={(e) => {
+                                 const details = e.currentTarget.closest('details') as HTMLDetailsElement;
+                                 if (details) {
+                                   details.open = false;
+                                 }
+                               }}>
+                            <span>Collapse</span>
+                            <svg className="w-3 h-3 transition-transform duration-300 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </div>
                         </div>
                       </details>
                     )}
