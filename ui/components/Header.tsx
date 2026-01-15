@@ -22,7 +22,7 @@ export default function Header() {
           <a href="/#who" className="flex items-center" aria-label="Takeoffs360 home">
             <div className="relative w-32 sm:w-40 h-12 sm:h-16 overflow-hidden">
               <Image
-                src="/logo-3.png"
+                src="/logo.png"
                 alt="Takeoffs360 logo"
                 fill
                 priority

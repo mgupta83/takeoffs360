@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-slate-200 mt-20 bg-white">
       <div className="border-t border-slate-100">
-        <div className="max-w-6xl mx-auto px-6 py-4">
+        <div className="max-w-6xl mx-auto px-6 py-4 pb-20 md:pb-4">
           {/* Mobile Layout - Stacked */}
           <div className="flex flex-col gap-4 md:hidden">
             <div className="flex items-center justify-between">
