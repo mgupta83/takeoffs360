@@ -225,7 +225,7 @@ export default function Home() {
             <div className="bg-slate-50 p-6 rounded-lg shadow-sm text-center">
               <div className="text-amber-500 text-2xl mb-3">🔒</div>
               <h3 className="text-lg font-semibold mb-2">Secure Data Handling & Confidentiality</h3>
-              <p className="text-sm text-slate-600">Enterprise-grade security protocols and strict NDA practices protect your sensitive project data.</p>
+              <p className="text-sm text-slate-600">Strict NDA practices and security protocols protect your sensitive project data.</p>
             </div>
 
             <div className="bg-slate-50 p-6 rounded-lg shadow-sm text-center">
@@ -267,7 +267,7 @@ export default function Home() {
             <div className="bg-slate-50 p-6 rounded-lg shadow-sm text-center">
               <div className="text-amber-500 text-2xl mb-3">👤</div>
               <h3 className="text-lg font-semibold mb-2">Dedicated Point of Contact</h3>
-              <p className="text-sm text-slate-600">A single point of contact and consistent estimator teams for seamless communication.</p>
+              <p className="text-sm text-slate-600">A single point of contact for efficient and seamless communication.</p>
             </div>
           </div>
         </div>
@@ -278,7 +278,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center px-6">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800 drop-shadow-md">Ready to Get Started?</h2>
           <p className="text-lg sm:text-xl mb-8 max-w-2xl mx-auto text-slate-700 drop-shadow-sm">
-            Reach out to us for a free trial and discover how we can transform your drawings into winning bids.
+            Reach out to us for a free trial and discover how we can help transform your drawings into winning bids.
           </p>
           <a href="/contact" className="inline-block bg-amber-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-amber-600 transition duration-300 shadow-lg text-lg">
             Contact Us
