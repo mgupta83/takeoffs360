@@ -15,11 +15,10 @@
 
 import Script from 'next/script'
 import { useState } from 'react';
-import { Mail, Copy, Check, Phone, PhoneCall, MapPin } from 'lucide-react';
+import { Mail, Copy, Check, Phone, PhoneCall } from 'lucide-react';
 
 const EMAIL = 'info@takeoffs360.com';
 const PHONE = '+1 (267) 718 3770';
-const ADDRESS = 'Takeoffs360 LLC 325 Sentry Parkway E, STE 301 PMB 1061, Bluebell, PA 19422, United States';
 const API_URL = 'https://api.staticforms.dev/submit';
 const API_KEY = 'sf_8mjh00l3g2id8lj5lk8l28al';
 const API_KEY_FIELD = 'apiKey';
@@ -31,7 +30,6 @@ export default function ContactForm() {
   const [submitting, setSubmitting] = useState(false);
   const [copied, setCopied] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
-  const [copiedAddress, setCopiedAddress] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [statusType, setStatusType] = useState<'error' | 'success' | null>(null);
   const [sent, setSent] = useState(false);
@@ -56,17 +54,6 @@ export default function ContactForm() {
     } catch (err) {
       console.error('Copy phone failed', err);
       setCopiedPhone(false);
-    }
-  };
-
-  const copyAddress = async () => {
-    try {
-      await navigator.clipboard.writeText(ADDRESS);
-      setCopiedAddress(true);
-      setTimeout(() => setCopiedAddress(false), 2000);
-    } catch (err) {
-      console.error('Copy address failed', err);
-      setCopiedAddress(false);
     }
   };
 
@@ -208,9 +195,9 @@ export default function ContactForm() {
       <p className="text-lg text-zinc-600 mb-8">Got construction drawings? Let's turn them into winning bids together.</p>
 
       <div className="grid grid-cols-1 gap-8">
-        {/* Contact Information - Split into left and right */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Left side: Email and Phone stacked vertically */}
+        {/* Contact Information */}
+        <div className="max-w-2xl mx-auto md:mx-0 md:max-w-none">
+          {/* Email and Phone stacked vertically */}
           <div className="space-y-4">
             {/* Email */}
             <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-white/20">
@@ -270,41 +257,6 @@ export default function ContactForm() {
                         className="inline-flex items-center justify-center h-6 w-6 rounded text-slate-600 hover:bg-slate-100 cursor-pointer"
                       >
                         {copiedPhone ? (
-                          <Check className="h-4 w-4 text-amber-500" />
-                        ) : (
-                          <Copy className="h-4 w-4" />
-                        )}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right side: Address */}
-          <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-white/20">
-            <div className="flex items-start gap-3">
-              <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg shadow-md">
-                <MapPin className="h-4 w-4 text-white" />
-              </div>
-              <div className="flex-1">
-                <div className="text-slate-800 leading-relaxed">
-                  <div className="font-semibold text-sm text-slate-900 mb-2">Takeoffs360 LLC</div>
-                  <div className="space-y-1">
-                    <div className="text-slate-800 text-sm font-medium">325 Sentry Parkway E, STE 301 PMB 1061</div>
-                    <div className="text-slate-800 text-sm font-medium">Bluebell, PA 19422</div>
-                    <div className="flex items-center gap-2">
-                      <div className="text-amber-600 text-sm font-medium">United States</div>
-                      <span
-                        role="button"
-                        tabIndex={0}
-                        onClick={copyAddress}
-                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyAddress(); } }}
-                        aria-label="Copy address to clipboard"
-                        className="inline-flex items-center justify-center h-6 w-6 rounded text-slate-600 hover:bg-slate-100 cursor-pointer"
-                      >
-                        {copiedAddress ? (
                           <Check className="h-4 w-4 text-amber-500" />
                         ) : (
                           <Copy className="h-4 w-4" />

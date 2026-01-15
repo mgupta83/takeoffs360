@@ -13,7 +13,6 @@ export default function Footer() {
                 {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
                 {/* @ts-ignore */}
                 <SocialIcons links={[
-                  { href: 'https://www.linkedin.com', label: 'Takeoffs360 on LinkedIn', type: 'linkedin' },
                   { href: 'https://x.com/takeoffs360', label: 'Takeoffs360 on Twitter', type: 'twitter' },
                 ]} />
               </div>
@@ -36,7 +35,6 @@ export default function Footer() {
               {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
               {/* @ts-ignore */}
               <SocialIcons links={[
-                { href: 'https://www.linkedin.com', label: 'Takeoffs360 on LinkedIn', type: 'linkedin' },
                 { href: 'https://x.com/takeoffs360', label: 'Takeoffs360 on Twitter', type: 'twitter' },
               ]} />
             </div>
