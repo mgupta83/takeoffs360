@@ -15,10 +15,11 @@
 
 import Script from 'next/script'
 import { useState } from 'react';
-import { Mail, Copy, Check, Phone, PhoneCall } from 'lucide-react';
+import { Mail, Copy, Check, Phone, PhoneCall, MapPin } from 'lucide-react';
 
 const EMAIL = 'info@takeoffs360.com';
-const PHONE = '000-000-0000';
+const PHONE = '+1 (267) 718 3770';
+const ADDRESS = 'Takeoffs360 LLC 325 Sentry Parkway E, STE 301 PMB 1061, Bluebell, PA 19422, United States';
 const API_URL = 'https://api.staticforms.dev/submit';
 const API_KEY = 'sf_8mjh00l3g2id8lj5lk8l28al';
 const API_KEY_FIELD = 'apiKey';
@@ -30,6 +31,7 @@ export default function ContactForm() {
   const [submitting, setSubmitting] = useState(false);
   const [copied, setCopied] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
+  const [copiedAddress, setCopiedAddress] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [statusType, setStatusType] = useState<'error' | 'success' | null>(null);
   const [sent, setSent] = useState(false);
@@ -54,6 +56,17 @@ export default function ContactForm() {
     } catch (err) {
       console.error('Copy phone failed', err);
       setCopiedPhone(false);
+    }
+  };
+
+  const copyAddress = async () => {
+    try {
+      await navigator.clipboard.writeText(ADDRESS);
+      setCopiedAddress(true);
+      setTimeout(() => setCopiedAddress(false), 2000);
+    } catch (err) {
+      console.error('Copy address failed', err);
+      setCopiedAddress(false);
     }
   };
 
@@ -195,60 +208,29 @@ export default function ContactForm() {
       <p className="text-lg text-zinc-600 mb-8">Got construction drawings? Let's turn them into winning bids together.</p>
 
       <div className="grid grid-cols-1 gap-8">
-        {/* Contact row with two columns: Email (col1) and Phone (col2) */}
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-zinc-100">
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-            {/* Column 1: Email */}
-            <div className="w-full md:flex-1 flex items-center gap-3">
-              <Mail className="h-8 w-8 text-amber-500" />
-              <div>
-                <div className="text-sm font-semibold">Email Us</div>
-                <div className="mt-1 flex items-center gap-2">
-                  <div className="text-zinc-700 font-medium mr-2">{EMAIL}</div>
-                  <span
-                    role="button"
-                    tabIndex={0}
-                    onClick={copyEmail}
-                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyEmail(); } }}
-                    aria-label="Copy email to clipboard"
-                    className="inline-flex items-center justify-center h-6 w-6 rounded text-slate-600 hover:bg-slate-100 cursor-pointer"
-                  >
-                    {copied ? (
-                      <Check className="h-4 w-4 text-amber-500" />
-                    ) : (
-                      <Copy className="h-4 w-4" />
-                    )}
-                  </span>
+        {/* Contact Information - Split into left and right */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Left side: Email and Phone stacked vertically */}
+          <div className="space-y-4">
+            {/* Email */}
+            <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-white/20">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg shadow-md">
+                  <Mail className="h-4 w-4 text-white" />
                 </div>
-              </div>
-            </div>
-
-            {/* Column 2: Phone */}
-            <div className="w-full md:flex-1 flex items-center gap-3">
-              <Phone className="h-8 w-8 text-amber-500" />
-              <div>
-                <div className="text-sm font-semibold">Call Us</div>
-                <div className="mt-1 flex items-center gap-2">
-                  <div className="text-zinc-700 font-medium mr-2">{PHONE}</div>
-                  <div className="flex items-center gap-2">
-                    <a
-                      href={`tel:${PHONE}`}
-                      aria-label={`Call ${PHONE}`}
-                      className="inline-flex items-center justify-center h-7 px-3 rounded bg-amber-50 text-amber-600 border border-amber-100 hover:bg-amber-100 text-sm gap-2"
-                    >
-                      <PhoneCall className="h-4 w-4" />
-                      <span>Call Now</span>
-                    </a>
-
+                <div className="flex-1">
+                  <div className="text-sm font-semibold text-slate-800">Email Us</div>
+                  <div className="mt-1 flex items-center gap-2">
+                    <div className="text-slate-800 text-sm font-medium">{EMAIL}</div>
                     <span
                       role="button"
                       tabIndex={0}
-                      onClick={copyPhone}
-                      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyPhone(); } }}
-                      aria-label="Copy phone to clipboard"
+                      onClick={copyEmail}
+                      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyEmail(); } }}
+                      aria-label="Copy email to clipboard"
                       className="inline-flex items-center justify-center h-6 w-6 rounded text-slate-600 hover:bg-slate-100 cursor-pointer"
                     >
-                      {copiedPhone ? (
+                      {copied ? (
                         <Check className="h-4 w-4 text-amber-500" />
                       ) : (
                         <Copy className="h-4 w-4" />
@@ -258,11 +240,87 @@ export default function ContactForm() {
                 </div>
               </div>
             </div>
+
+            {/* Phone */}
+            <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-white/20">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg shadow-md">
+                  <Phone className="h-4 w-4 text-white" />
+                </div>
+                <div className="flex-1">
+                  <div className="text-sm font-semibold text-slate-800">Call Us</div>
+                  <div className="mt-1 flex items-center gap-2">
+                    <div className="text-slate-800 text-sm font-medium mr-2">{PHONE}</div>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href={`tel:${PHONE}`}
+                        aria-label={`Call ${PHONE}`}
+                        className="inline-flex items-center justify-center h-7 px-3 rounded bg-amber-50 text-amber-600 border border-amber-100 hover:bg-amber-100 text-sm gap-2"
+                      >
+                        <PhoneCall className="h-4 w-4" />
+                        <span>Call Now</span>
+                      </a>
+
+                      <span
+                        role="button"
+                        tabIndex={0}
+                        onClick={copyPhone}
+                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyPhone(); } }}
+                        aria-label="Copy phone to clipboard"
+                        className="inline-flex items-center justify-center h-6 w-6 rounded text-slate-600 hover:bg-slate-100 cursor-pointer"
+                      >
+                        {copiedPhone ? (
+                          <Check className="h-4 w-4 text-amber-500" />
+                        ) : (
+                          <Copy className="h-4 w-4" />
+                        )}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right side: Address */}
+          <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-white/20">
+            <div className="flex items-start gap-3">
+              <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg shadow-md">
+                <MapPin className="h-4 w-4 text-white" />
+              </div>
+              <div className="flex-1">
+                <div className="text-sm font-semibold text-slate-800 mb-2">Write To Us</div>
+                <div className="text-slate-800 leading-relaxed">
+                  <div className="font-semibold text-sm text-slate-900 mb-2">Takeoffs360 LLC</div>
+                  <div className="space-y-1">
+                    <div className="text-slate-800 text-sm font-medium">325 Sentry Parkway E, STE 301 PMB 1061</div>
+                    <div className="text-slate-800 text-sm font-medium">Bluebell, PA 19422</div>
+                    <div className="flex items-center gap-2">
+                      <div className="text-amber-600 text-sm font-medium">United States</div>
+                      <span
+                        role="button"
+                        tabIndex={0}
+                        onClick={copyAddress}
+                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyAddress(); } }}
+                        aria-label="Copy address to clipboard"
+                        className="inline-flex items-center justify-center h-6 w-6 rounded text-slate-600 hover:bg-slate-100 cursor-pointer"
+                      >
+                        {copiedAddress ? (
+                          <Check className="h-4 w-4 text-amber-500" />
+                        ) : (
+                          <Copy className="h-4 w-4" />
+                        )}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Contact form with title and subtext */}
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-zinc-100">
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-zinc-100 mt-6">
           <h2 className="text-2xl font-semibold">Let's Start a Conversation</h2>
           <p className="text-sm text-zinc-600 mt-1 mb-4">Expect a response within 24 hours.</p>
 

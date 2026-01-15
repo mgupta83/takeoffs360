@@ -91,7 +91,7 @@ export default function Home() {
                 <span className="text-slate-800 px-4 py-2 rounded-full text-sm font-semibold border border-slate-300">Flexible Engagement Model</span>
                 <span className="text-slate-800 px-4 py-2 rounded-full text-sm font-semibold border border-slate-300">Dedicated Point of Contact</span>
                 <span className="text-slate-800 px-4 py-2 rounded-full text-sm font-semibold border border-slate-300">Secure Data Handling</span>
-                <span className="text-slate-800 px-4 py-2 rounded-full text-sm font-semibold border border-slate-300">Advanced Technology & Processes</span>
+                <span className="text-slate-800 px-4 py-2 rounded-full text-sm font-semibold border border-slate-300">Ongoing Support & Collaboration</span>
               </div>
             </div>
 
@@ -209,26 +209,26 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
               <div className="text-amber-500 text-3xl mb-4">🔒</div>
-              <h3 className="text-xl font-semibold mb-2">Secured Data Handling</h3>
-              <p className="text-slate-600">Enterprise-grade security protocols protect your sensitive project data.</p>
+              <h3 className="text-xl font-semibold mb-2">Secure Data Handling & Confidentiality</h3>
+              <p className="text-slate-600">Enterprise-grade security protocols and strict NDA practices protect your sensitive project data.</p>
             </div>
 
             <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
               <div className="text-amber-500 text-3xl mb-4">📋</div>
-              <h3 className="text-xl font-semibold mb-2">Standardized Templates & SOPs</h3>
-              <p className="text-slate-600">Consistent takeoff templates and standard operating procedures promote accuracy.</p>
+              <h3 className="text-xl font-semibold mb-2">Standardized Templates, SOPs & Technology</h3>
+              <p className="text-slate-600">Consistent takeoff templates, standard operating procedures, and cutting-edge tools ensure superior results.</p>
             </div>
 
             <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
               <div className="text-amber-500 text-3xl mb-4">✅</div>
-              <h3 className="text-xl font-semibold mb-2">Multi-Level Quality Control</h3>
-              <p className="text-slate-600">Rigorous checks at multiple stages minimize errors and ensure high accuracy.</p>
+              <h3 className="text-xl font-semibold mb-2">Multi-Level Quality Control & Extraction</h3>
+              <p className="text-slate-600">Rigorous checks at multiple stages and precise measurement minimize errors and ensure high accuracy.</p>
             </div>
 
             <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
               <div className="text-amber-500 text-3xl mb-4">🔄</div>
-              <h3 className="text-xl font-semibold mb-2">Ongoing Revision Support</h3>
-              <p className="text-slate-600">Continuous support throughout the project lifecycle for all revisions.</p>
+              <h3 className="text-xl font-semibold mb-2">Ongoing Support & Collaboration</h3>
+              <p className="text-slate-600">Continuous support throughout the project lifecycle with seamless integration across platforms.</p>
             </div>
 
             <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
@@ -238,27 +238,9 @@ export default function Home() {
             </div>
 
             <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
-              <div className="text-amber-500 text-3xl mb-4">🔍</div>
-              <h3 className="text-xl font-semibold mb-2">Detailed Quantity Extraction</h3>
-              <p className="text-slate-600">Precise measurement and extraction of all project quantities.</p>
-            </div>
-
-            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
               <div className="text-amber-500 text-3xl mb-4">💰</div>
               <h3 className="text-xl font-semibold mb-2">Clear Cost Visibility</h3>
               <p className="text-slate-600">Transparent cost breakdowns for informed decision-making.</p>
-            </div>
-
-            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
-              <div className="text-amber-500 text-3xl mb-4">🤝</div>
-              <h3 className="text-xl font-semibold mb-2">Easy Collaboration</h3>
-              <p className="text-slate-600">Seamless integration across various platforms and tools.</p>
-            </div>
-
-            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
-              <div className="text-amber-500 text-3xl mb-4">🛡️</div>
-              <h3 className="text-xl font-semibold mb-2">Strong Confidentiality</h3>
-              <p className="text-slate-600">Strict NDA and data security practices protect your information.</p>
             </div>
 
             <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
@@ -271,12 +253,6 @@ export default function Home() {
               <div className="text-amber-500 text-3xl mb-4">👤</div>
               <h3 className="text-xl font-semibold mb-2">Dedicated Point of Contact</h3>
               <p className="text-slate-600">A single point of contact and consistent estimator teams for seamless communication.</p>
-            </div>
-
-            <div className="bg-slate-50 p-8 rounded-lg shadow-sm text-center">
-              <div className="text-amber-500 text-3xl mb-4">⚙️</div>
-              <h3 className="text-xl font-semibold mb-2">Advanced Technology & Processes</h3>
-              <p className="text-slate-600">Leveraging cutting-edge tools and methodologies for superior results.</p>
             </div>
           </div>
         </div>
