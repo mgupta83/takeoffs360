@@ -201,14 +201,14 @@ export default function ContactForm() {
           <div className="space-y-4">
             {/* Email */}
             <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-white/20">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg shadow-md">
+              <div className="flex items-start gap-3">
+                <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg shadow-md mt-0.5">
                   <Mail className="h-4 w-4 text-white" />
                 </div>
                 <div className="flex-1">
-                  <div className="text-sm font-semibold text-slate-800">Email Us</div>
+                  <div className="text-base font-semibold text-slate-800">Email Us</div>
                   <div className="mt-1 flex items-center gap-2">
-                    <div className="text-slate-800 text-sm font-medium">{EMAIL}</div>
+                    <div className="text-slate-800 text-base font-medium">{EMAIL}</div>
                     <span
                       role="button"
                       tabIndex={0}
@@ -230,24 +230,15 @@ export default function ContactForm() {
 
             {/* Phone */}
             <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-white/20">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg shadow-md">
+              <div className="flex items-start gap-3">
+                <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg shadow-md mt-0.5">
                   <Phone className="h-4 w-4 text-white" />
                 </div>
                 <div className="flex-1">
-                  <div className="text-sm font-semibold text-slate-800">Call Us</div>
-                  <div className="mt-1 flex items-center gap-2">
-                    <div className="text-slate-800 text-sm font-medium mr-2">{PHONE}</div>
+                  <div className="text-base font-semibold text-slate-800">Call Us</div>
+                  <div className="mt-1">
                     <div className="flex items-center gap-2">
-                      <a
-                        href={`tel:${PHONE}`}
-                        aria-label={`Call ${PHONE}`}
-                        className="inline-flex items-center justify-center h-7 px-3 rounded bg-amber-50 text-amber-600 border border-amber-100 hover:bg-amber-100 text-sm gap-2"
-                      >
-                        <PhoneCall className="h-4 w-4" />
-                        <span>Call Now</span>
-                      </a>
-
+                      <div className="text-slate-800 text-base font-medium">{PHONE}</div>
                       <span
                         role="button"
                         tabIndex={0}
@@ -263,6 +254,16 @@ export default function ContactForm() {
                         )}
                       </span>
                     </div>
+                    <div className="mt-2">
+                      <a
+                        href={`tel:${PHONE}`}
+                        aria-label={`Call ${PHONE}`}
+                        className="inline-flex items-center justify-center h-7 px-3 rounded bg-amber-50 text-amber-600 border border-amber-100 hover:bg-amber-100 text-sm gap-2"
+                      >
+                        <PhoneCall className="h-4 w-4" />
+                        <span>Call Now</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -273,10 +274,10 @@ export default function ContactForm() {
         {/* Contact form with title and subtext */}
         <div className="bg-white p-6 rounded-lg shadow-sm border border-zinc-100 mt-6">
           <h2 className="text-2xl font-semibold">Let's Start a Conversation</h2>
-          <p className="text-sm text-zinc-600 mt-1 mb-4">Expect a response within 24 hours.</p>
+          <p className="text-base text-zinc-600 mt-1 mb-4">Expect a response within 24 hours.</p>
 
           {statusMessage && (
-            <div className={`mb-4 rounded px-4 py-3 text-sm ${statusType === 'error' ? 'border border-red-200 bg-red-50 text-red-800' : 'border border-green-200 bg-green-50 text-green-800'}`} role="status">
+            <div className={`mb-4 rounded px-4 py-3 text-base ${statusType === 'error' ? 'border border-red-200 bg-red-50 text-red-800' : 'border border-green-200 bg-green-50 text-green-800'}`} role="status">
               {statusMessage}
             </div>
           )}
@@ -288,23 +289,23 @@ export default function ContactForm() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="name">Name</label>
+              <label className="block text-base font-medium text-zinc-700 mb-1" htmlFor="name">Name</label>
               <input id="name" name="name" type="text" required onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="phone">Phone</label>
+              <label className="block text-base font-medium text-zinc-700 mb-1" htmlFor="phone">Phone</label>
               <input id="phone" name="phone" type="tel" required onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="email">Email</label>
+              <label className="block text-base font-medium text-zinc-700 mb-1" htmlFor="email">Email</label>
               <input id="email" name="email" type="email" placeholder="optional" onChange={() => { setStatusMessage(null); setStatusType(null); }} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
             </div>
 
 
             <div>
-              <label className="block text-sm font-medium text-zinc-700 mb-1" htmlFor="message">Message</label>
+              <label className="block text-base font-medium text-zinc-700 mb-1" htmlFor="message">Message</label>
               <textarea id="message" name="message" required rows={6} className="w-full rounded border border-zinc-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300" />
             </div>
 
@@ -313,7 +314,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={submitting || sent}
-              className="inline-flex items-center gap-2 rounded bg-amber-500 px-4 py-2 text-white font-medium hover:bg-amber-600 disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
+              className="inline-flex items-center gap-2 rounded bg-amber-500 px-4 py-2 text-white font-medium hover:bg-amber-600 disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 text-base"
             >
               {sent ? (
                 <>
