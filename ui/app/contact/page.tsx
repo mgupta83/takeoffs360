@@ -16,6 +16,7 @@
 import Script from 'next/script'
 import { useState } from 'react';
 import { Mail, Copy, Check, Phone, PhoneCall } from 'lucide-react';
+import Address from '@/components/Address'
 
 const EMAIL = 'info@takeoffs360.com';
 const PHONE = '+1 (267) 718 3770';
@@ -197,77 +198,82 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 gap-8">
         {/* Contact Information */}
         <div className="max-w-2xl mx-auto md:mx-0 md:max-w-none">
-          {/* Email and Phone stacked vertically */}
-          <div className="space-y-4">
-            {/* Email */}
-            <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-white/20">
-              <div className="flex items-start gap-3">
-                <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg shadow-md mt-0.5">
-                  <Mail className="h-4 w-4 text-white" />
-                </div>
-                <div className="flex-1">
-                  <div className="text-base font-semibold text-slate-800">Email Us</div>
-                  <div className="mt-1 flex items-center gap-2">
-                    <div className="text-slate-800 text-base font-medium">{EMAIL}</div>
-                    <span
-                      role="button"
-                      tabIndex={0}
-                      onClick={copyEmail}
-                      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyEmail(); } }}
-                      aria-label="Copy email to clipboard"
-                      className="inline-flex items-center justify-center h-6 w-6 rounded text-slate-600 hover:bg-slate-100 cursor-pointer"
-                    >
-                      {copied ? (
-                        <Check className="h-4 w-4 text-amber-500" />
-                      ) : (
-                        <Copy className="h-4 w-4" />
-                      )}
-                    </span>
+          <div className="md:flex md:items-stretch md:gap-6">
+            {/* Left: Email and Phone stacked vertically */}
+            <div className="flex-1 space-y-4">
+              {/* Email */}
+              <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-white/20">
+                <div className="flex items-start gap-3">
+                  <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg shadow-md mt-0.5">
+                    <Mail className="h-4 w-4 text-white" />
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Phone */}
-            <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-white/20">
-              <div className="flex items-start gap-3">
-                <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg shadow-md mt-0.5">
-                  <Phone className="h-4 w-4 text-white" />
-                </div>
-                <div className="flex-1">
-                  <div className="text-base font-semibold text-slate-800">Call Us</div>
-                  <div className="mt-1">
-                    <div className="flex items-center gap-2">
-                      <div className="text-slate-800 text-base font-medium">{PHONE}</div>
+                  <div className="flex-1">
+                    <div className="text-base font-semibold text-slate-800">Email Us</div>
+                    <div className="mt-1 flex items-center gap-2">
+                      <div className="text-slate-800 text-base font-medium">{EMAIL}</div>
                       <span
                         role="button"
                         tabIndex={0}
-                        onClick={copyPhone}
-                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyPhone(); } }}
-                        aria-label="Copy phone to clipboard"
+                        onClick={copyEmail}
+                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyEmail(); } }}
+                        aria-label="Copy email to clipboard"
                         className="inline-flex items-center justify-center h-6 w-6 rounded text-slate-600 hover:bg-slate-100 cursor-pointer"
                       >
-                        {copiedPhone ? (
+                        {copied ? (
                           <Check className="h-4 w-4 text-amber-500" />
                         ) : (
                           <Copy className="h-4 w-4" />
                         )}
                       </span>
                     </div>
-                    <div className="mt-2">
-                      <a
-                        href={`tel:${PHONE}`}
-                        aria-label={`Call ${PHONE}`}
-                        className="inline-flex items-center justify-center h-7 px-3 rounded bg-amber-50 text-amber-600 border border-amber-100 hover:bg-amber-100 text-sm gap-2"
-                      >
-                        <PhoneCall className="h-4 w-4" />
-                        <span>Call Now</span>
-                      </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Phone */}
+              <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-white/20">
+                <div className="flex items-start gap-3">
+                  <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg shadow-md mt-0.5">
+                    <Phone className="h-4 w-4 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-base font-semibold text-slate-800">Call Us</div>
+                    <div className="mt-1">
+                      <div className="flex items-center gap-2">
+                        <div className="text-slate-800 text-base font-medium">{PHONE}</div>
+                        <span
+                          role="button"
+                          tabIndex={0}
+                          onClick={copyPhone}
+                          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyPhone(); } }}
+                          aria-label="Copy phone to clipboard"
+                          className="inline-flex items-center justify-center h-6 w-6 rounded text-slate-600 hover:bg-slate-100 cursor-pointer"
+                        >
+                          {copiedPhone ? (
+                            <Check className="h-4 w-4 text-amber-500" />
+                          ) : (
+                            <Copy className="h-4 w-4" />
+                          )}
+                        </span>
+                      </div>
+                      <div className="mt-2">
+                        <a
+                          href={`tel:${PHONE}`}
+                          aria-label={`Call ${PHONE}`}
+                          className="inline-flex items-center justify-center h-7 px-3 rounded bg-amber-50 text-amber-600 border border-amber-100 hover:bg-amber-100 text-sm gap-2"
+                        >
+                          <PhoneCall className="h-4 w-4" />
+                          <span>Call Now</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Right: Address (shown only on md+) */}
+            <Address />
           </div>
         </div>
 
