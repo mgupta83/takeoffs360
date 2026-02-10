@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Takeoffs360 | Construction Quantity Takeoffs & Bid Management",
-  description: "Professional construction quantity takeoffs for contractors and builders. Turn drawings into winning bids with Takeoffs360. Accurate takeoffs, faster turnaround.",
+  title: "Takeoffs360 | Construction Quantity Takeoffs Made Easy",
+  description: "Professional construction quantity takeoffs for contractors and builders. Turn drawings into winning bids with Takeoffs360. Reliable takeoffs, faster turnaround.",
   keywords: "takeoffs360, takeoffs 360, construction takeoffs, quantity takeoffs, bid quantification, construction estimating",
   authors: [{ name: "Takeoffs360" }],
   creator: "Takeoffs360",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://takeoffs360.com',
-    title: 'Takeoffs360 | Construction Quantity Takeoffs',
+    title: 'Takeoffs360 | Construction Quantity Takeoffs Made Easy',
     description: 'Professional construction quantity takeoffs for contractors and builders. Turn drawings into winning bids.',
     siteName: 'Takeoffs360',
     images: [

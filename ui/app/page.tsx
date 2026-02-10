@@ -2,17 +2,11 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { Metadata } from 'next'
 import {
   ClipboardCheck, HardHat, Layers, BrickWall,
   Component, TreePine, ShieldCheck, DoorOpen,
   Palette, PackageSearch, Wrench, Building, Home as HomeIcon, Hammer
 } from 'lucide-react'
-
-export const metadata: Metadata = {
-  title: 'Construction Takeoffs Made Easy | Takeoffs360',
-  description: 'Professional construction takeoff services. Takeoffs360 provides accurate quantity takeoffs for contractors and builders. Win more bids with detailed takeoffs.',
-};
 
 const divisions = [
   { id: '03', title: 'Concrete', icon: <Layers />, items: [
