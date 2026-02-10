@@ -2,11 +2,17 @@
 
 import React from 'react'
 import Link from 'next/link'
+import { Metadata } from 'next'
 import {
   ClipboardCheck, HardHat, Layers, BrickWall,
   Component, TreePine, ShieldCheck, DoorOpen,
   Palette, PackageSearch, Wrench, Building, Home as HomeIcon, Hammer
 } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Construction Takeoffs Made Easy | Takeoffs360',
+  description: 'Professional construction takeoff services. Takeoffs360 provides accurate quantity takeoffs for contractors and builders. Win more bids with detailed takeoffs.',
+};
 
 const divisions = [
   { id: '03', title: 'Concrete', icon: <Layers />, items: [
@@ -86,7 +92,7 @@ export default function Home() {
                 <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-amber-600 mx-auto lg:mx-0 rounded-full"></div>
               </div>
               <p className="text-base sm:text-lg lg:text-xl text-slate-700 leading-relaxed mb-4 lg:mb-8">
-                At Takeoffs360, we partner with Contractors, Developers, and Investors to build highly detailed and auditable takeoffs with higher accuracy and faster turnaround to help them win more bids.
+                At <strong>Takeoffs360</strong>, we partner with Contractors, Developers, and Investors to build highly detailed and auditable takeoffs with higher accuracy and faster turnaround to help them win more bids.
               </p>
               {/* Desktop-only highlights */}
               <div className="hidden lg:flex flex-wrap justify-center lg:justify-start gap-4">
@@ -103,7 +109,7 @@ export default function Home() {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-8 lg:mb-6">
                 <img
                   src="/pic-2.png"
-                  alt="Takeoffs360 plan view"
+                  alt="Takeoffs360 construction quantity takeoff example - detailed plan view"
                   className="w-full h-32 sm:h-36 lg:h-64 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />

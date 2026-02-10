@@ -1,0 +1,12 @@
+# robots.txt for Takeoffs360
+User-agent: *
+Allow: /
+
+# Specific rules for crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://takeoffs360.com/sitemap.xml

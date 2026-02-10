@@ -16,8 +16,46 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Takeoffs360 | Construction Quantity Takeoffs",
-  description: "Accurate construction quantity takeoffs for contractors and builders.",
+  title: "Takeoffs360 | Construction Quantity Takeoffs & Bid Management",
+  description: "Professional construction quantity takeoffs for contractors and builders. Turn drawings into winning bids with Takeoffs360. Accurate takeoffs, faster turnaround.",
+  keywords: "takeoffs360, takeoffs 360, construction takeoffs, quantity takeoffs, bid quantification, construction estimating",
+  authors: [{ name: "Takeoffs360" }],
+  creator: "Takeoffs360",
+  publisher: "Takeoffs360",
+  metadataBase: new URL("https://takeoffs360.com"),
+  alternates: {
+    canonical: "https://takeoffs360.com",
+  },
+  openGraph: {
+    type: 'website',
+    url: 'https://takeoffs360.com',
+    title: 'Takeoffs360 | Construction Quantity Takeoffs',
+    description: 'Professional construction quantity takeoffs for contractors and builders. Turn drawings into winning bids.',
+    siteName: 'Takeoffs360',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Takeoffs360 Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Takeoffs360 | Construction Quantity Takeoffs',
+    description: 'Professional construction quantity takeoffs for contractors and builders.',
+    images: ['/logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   icons: [
     // Standard favicon.ico - browsers often prefer this over PNG
     { rel: 'icon', url: '/favicon.ico?v=1.0.1' },
@@ -44,8 +82,32 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Takeoffs360',
+    url: 'https://takeoffs360.com',
+    logo: 'https://takeoffs360.com/logo.png',
+    description: 'Professional construction quantity takeoffs for contractors and builders.',
+    // sameAs: [
+    //   'https://www.facebook.com/takeoffs360',
+    //   'https://www.linkedin.com/company/takeoffs360',
+    // ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'Customer Service',
+      email: 'info@takeoffs360.com',
+    },
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
