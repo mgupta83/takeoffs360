@@ -13,7 +13,8 @@ export default function Footer() {
                 {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
                 {/* @ts-ignore */}
                 <SocialIcons links={[
-                  { href: 'https://x.com/takeoffs360', label: 'Takeoffs360 on Twitter', type: 'twitter' },
+                  { href: 'https://x.com/takeoffs360', label: 'Takeoffs360 on X', type: 'x' },
+                  { href: 'https://www.linkedin.com/company/takeoffs360/', label: 'Takeoffs360 on LinkedIn', type: 'linkedin' },
                 ]} />
               </div>
               <div className="text-xs text-slate-500">© {new Date().getFullYear()} Takeoffs360. All rights reserved.</div>
@@ -35,7 +36,8 @@ export default function Footer() {
               {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
               {/* @ts-ignore */}
               <SocialIcons links={[
-                { href: 'https://x.com/takeoffs360', label: 'Takeoffs360 on Twitter', type: 'twitter' },
+                { href: 'https://x.com/takeoffs360', label: 'Takeoffs360 on X', type: 'x' },
+                { href: 'https://www.linkedin.com/company/takeoffs360/', label: 'Takeoffs360 on LinkedIn', type: 'linkedin' },
               ]} />
             </div>
 
